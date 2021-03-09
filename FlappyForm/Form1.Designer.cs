@@ -31,47 +31,51 @@ namespace FlappyForm
         {
             this.components = new System.ComponentModel.Container();
             this.FlappyBird = new System.Windows.Forms.PictureBox();
-            this.Pipe1 = new System.Windows.Forms.PictureBox();
-            this.Pipe2 = new System.Windows.Forms.PictureBox();
+            this.pipe1 = new System.Windows.Forms.PictureBox();
+            this.pipe2 = new System.Windows.Forms.PictureBox();
             this.currenScore = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.MenuPanel = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.HSButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
             this.Ground = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.birdTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pipe1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pipe2)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
+            this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // FlappyBird
             // 
             this.FlappyBird.BackColor = System.Drawing.Color.Lime;
-            this.FlappyBird.Location = new System.Drawing.Point(27, 101);
+            this.FlappyBird.Location = new System.Drawing.Point(131, 265);
             this.FlappyBird.Name = "FlappyBird";
             this.FlappyBird.Size = new System.Drawing.Size(100, 50);
+            this.FlappyBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.FlappyBird.TabIndex = 0;
             this.FlappyBird.TabStop = false;
             // 
-            // Pipe1
+            // pipe1
             // 
-            this.Pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.Pipe1.Location = new System.Drawing.Point(803, 586);
-            this.Pipe1.Name = "Pipe1";
-            this.Pipe1.Size = new System.Drawing.Size(100, 91);
-            this.Pipe1.TabIndex = 1;
-            this.Pipe1.TabStop = false;
+            this.pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipe1.Location = new System.Drawing.Point(803, 340);
+            this.pipe1.Name = "pipe1";
+            this.pipe1.Size = new System.Drawing.Size(100, 337);
+            this.pipe1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipe1.TabIndex = 1;
+            this.pipe1.TabStop = false;
             // 
-            // Pipe2
+            // pipe2
             // 
-            this.Pipe2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.Pipe2.Location = new System.Drawing.Point(803, -2);
-            this.Pipe2.Name = "Pipe2";
-            this.Pipe2.Size = new System.Drawing.Size(100, 50);
-            this.Pipe2.TabIndex = 2;
-            this.Pipe2.TabStop = false;
+            this.pipe2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipe2.Location = new System.Drawing.Point(803, 0);
+            this.pipe2.Name = "pipe2";
+            this.pipe2.Size = new System.Drawing.Size(100, 195);
+            this.pipe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipe2.TabIndex = 2;
+            this.pipe2.TabStop = false;
             // 
             // currenScore
             // 
@@ -83,16 +87,16 @@ namespace FlappyForm
             this.currenScore.TabIndex = 3;
             this.currenScore.Text = "Score: ";
             // 
-            // panel1
+            // MenuPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.Khaki;
-            this.panel1.Controls.Add(this.ExitButton);
-            this.panel1.Controls.Add(this.HSButton);
-            this.panel1.Controls.Add(this.StartButton);
-            this.panel1.Location = new System.Drawing.Point(344, 147);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(265, 315);
-            this.panel1.TabIndex = 4;
+            this.MenuPanel.BackColor = System.Drawing.Color.Khaki;
+            this.MenuPanel.Controls.Add(this.ExitButton);
+            this.MenuPanel.Controls.Add(this.HSButton);
+            this.MenuPanel.Controls.Add(this.StartButton);
+            this.MenuPanel.Location = new System.Drawing.Point(344, 147);
+            this.MenuPanel.Name = "MenuPanel";
+            this.MenuPanel.Size = new System.Drawing.Size(265, 315);
+            this.MenuPanel.TabIndex = 4;
             // 
             // ExitButton
             // 
@@ -123,6 +127,7 @@ namespace FlappyForm
             this.StartButton.TabIndex = 0;
             this.StartButton.Text = "Start!";
             this.StartButton.UseVisualStyleBackColor = false;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // Ground
             // 
@@ -134,8 +139,15 @@ namespace FlappyForm
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // birdTimer
+            // 
+            this.birdTimer.Enabled = true;
+            this.birdTimer.Interval = 10;
+            this.birdTimer.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -143,18 +155,19 @@ namespace FlappyForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(993, 689);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.currenScore);
-            this.Controls.Add(this.Pipe2);
-            this.Controls.Add(this.Pipe1);
             this.Controls.Add(this.FlappyBird);
+            this.Controls.Add(this.MenuPanel);
+            this.Controls.Add(this.currenScore);
+            this.Controls.Add(this.pipe2);
+            this.Controls.Add(this.pipe1);
             this.Controls.Add(this.Ground);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pipe1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pipe2)).EndInit();
-            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pipe1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe2)).EndInit();
+            this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,15 +176,16 @@ namespace FlappyForm
         #endregion
 
         private System.Windows.Forms.PictureBox FlappyBird;
-        private System.Windows.Forms.PictureBox Pipe1;
-        private System.Windows.Forms.PictureBox Pipe2;
+        private System.Windows.Forms.PictureBox pipe1;
+        private System.Windows.Forms.PictureBox pipe2;
         private System.Windows.Forms.Label currenScore;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel MenuPanel;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button HSButton;
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.Panel Ground;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer birdTimer;
     }
 }
 
