@@ -33,9 +33,14 @@ namespace FlappyForm
             this.Pipe1 = new System.Windows.Forms.PictureBox();
             this.Pipe2 = new System.Windows.Forms.PictureBox();
             this.currenScore = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.StartButton = new System.Windows.Forms.Button();
+            this.HSButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pipe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pipe2)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // FlappyBird
@@ -75,12 +80,53 @@ namespace FlappyForm
             this.currenScore.TabIndex = 3;
             this.currenScore.Text = "Score: ";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Khaki;
+            this.panel1.Controls.Add(this.ExitButton);
+            this.panel1.Controls.Add(this.HSButton);
+            this.panel1.Controls.Add(this.StartButton);
+            this.panel1.Location = new System.Drawing.Point(510, 81);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(265, 315);
+            this.panel1.TabIndex = 4;
+            // 
+            // StartButton
+            // 
+            this.StartButton.BackColor = System.Drawing.Color.Gray;
+            this.StartButton.Location = new System.Drawing.Point(73, 44);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(126, 59);
+            this.StartButton.TabIndex = 0;
+            this.StartButton.Text = "Start!";
+            this.StartButton.UseVisualStyleBackColor = false;
+            // 
+            // HSButton
+            // 
+            this.HSButton.BackColor = System.Drawing.Color.Gray;
+            this.HSButton.Location = new System.Drawing.Point(73, 144);
+            this.HSButton.Name = "HSButton";
+            this.HSButton.Size = new System.Drawing.Size(126, 59);
+            this.HSButton.TabIndex = 1;
+            this.HSButton.Text = "Highscores";
+            this.HSButton.UseVisualStyleBackColor = false;
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.Location = new System.Drawing.Point(21, 240);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(100, 48);
+            this.ExitButton.TabIndex = 2;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.currenScore);
             this.Controls.Add(this.Pipe2);
             this.Controls.Add(this.Pipe1);
@@ -90,6 +136,7 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pipe1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pipe2)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,6 +148,10 @@ namespace FlappyForm
         private System.Windows.Forms.PictureBox Pipe1;
         private System.Windows.Forms.PictureBox Pipe2;
         private System.Windows.Forms.Label currenScore;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button HSButton;
+        private System.Windows.Forms.Button StartButton;
     }
 }
 
