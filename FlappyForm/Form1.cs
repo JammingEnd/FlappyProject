@@ -17,14 +17,25 @@ namespace FlappyForm
             InitializeComponent();
         }
 
-        private void Ground_Paint(object sender, PaintEventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-
+            movePipe(5);
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        void movePipe(int speed)
         {
+            if (Pipe1.Left >= 0)
+            { Pipe1.Left += -speed; }
+            else
+            { Pipe1.Left = 1020; } //waarschijnlijk de zijkant van de form
+            if (Pipe2.Left >= 0)
+            { Pipe2.Left += -speed; }
+            else
+            { Pipe2.Left = 1020; } //waarschijnlijk de zijkant van de form
+            
 
-        }
+
+
+
+            }
     }
 }

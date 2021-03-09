@@ -29,15 +29,17 @@ namespace FlappyForm
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.FlappyBird = new System.Windows.Forms.PictureBox();
             this.Pipe1 = new System.Windows.Forms.PictureBox();
             this.Pipe2 = new System.Windows.Forms.PictureBox();
             this.currenScore = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.StartButton = new System.Windows.Forms.Button();
-            this.HSButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.HSButton = new System.Windows.Forms.Button();
+            this.StartButton = new System.Windows.Forms.Button();
             this.Ground = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pipe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pipe2)).BeginInit();
@@ -58,7 +60,7 @@ namespace FlappyForm
             this.Pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.Pipe1.Location = new System.Drawing.Point(803, 586);
             this.Pipe1.Name = "Pipe1";
-            this.Pipe1.Size = new System.Drawing.Size(100, 50);
+            this.Pipe1.Size = new System.Drawing.Size(100, 91);
             this.Pipe1.TabIndex = 1;
             this.Pipe1.TabStop = false;
             // 
@@ -91,17 +93,15 @@ namespace FlappyForm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(265, 315);
             this.panel1.TabIndex = 4;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // StartButton
+            // ExitButton
             // 
-            this.StartButton.BackColor = System.Drawing.Color.Gray;
-            this.StartButton.Location = new System.Drawing.Point(73, 44);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(126, 59);
-            this.StartButton.TabIndex = 0;
-            this.StartButton.Text = "Start!";
-            this.StartButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Location = new System.Drawing.Point(21, 240);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(100, 48);
+            this.ExitButton.TabIndex = 2;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
             // 
             // HSButton
             // 
@@ -113,14 +113,15 @@ namespace FlappyForm
             this.HSButton.Text = "Highscores";
             this.HSButton.UseVisualStyleBackColor = false;
             // 
-            // ExitButton
+            // StartButton
             // 
-            this.ExitButton.Location = new System.Drawing.Point(21, 240);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(100, 48);
-            this.ExitButton.TabIndex = 2;
-            this.ExitButton.Text = "Exit";
-            this.ExitButton.UseVisualStyleBackColor = true;
+            this.StartButton.BackColor = System.Drawing.Color.Gray;
+            this.StartButton.Location = new System.Drawing.Point(73, 44);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(126, 59);
+            this.StartButton.TabIndex = 0;
+            this.StartButton.Text = "Start!";
+            this.StartButton.UseVisualStyleBackColor = false;
             // 
             // Ground
             // 
@@ -129,7 +130,10 @@ namespace FlappyForm
             this.Ground.Name = "Ground";
             this.Ground.Size = new System.Drawing.Size(1010, 57);
             this.Ground.TabIndex = 5;
-            this.Ground.Paint += new System.Windows.Forms.PaintEventHandler(this.Ground_Paint);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -137,12 +141,12 @@ namespace FlappyForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(993, 689);
-            this.Controls.Add(this.Ground);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.currenScore);
             this.Controls.Add(this.Pipe2);
             this.Controls.Add(this.Pipe1);
             this.Controls.Add(this.FlappyBird);
+            this.Controls.Add(this.Ground);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).EndInit();
@@ -165,6 +169,7 @@ namespace FlappyForm
         private System.Windows.Forms.Button HSButton;
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.Panel Ground;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
