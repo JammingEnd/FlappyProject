@@ -37,6 +37,7 @@ namespace FlappyForm
             this.StartButton = new System.Windows.Forms.Button();
             this.HSButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.Ground = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pipe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pipe2)).BeginInit();
@@ -46,7 +47,7 @@ namespace FlappyForm
             // FlappyBird
             // 
             this.FlappyBird.BackColor = System.Drawing.Color.Lime;
-            this.FlappyBird.Location = new System.Drawing.Point(70, 33);
+            this.FlappyBird.Location = new System.Drawing.Point(27, 101);
             this.FlappyBird.Name = "FlappyBird";
             this.FlappyBird.Size = new System.Drawing.Size(100, 50);
             this.FlappyBird.TabIndex = 0;
@@ -55,7 +56,7 @@ namespace FlappyForm
             // Pipe1
             // 
             this.Pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.Pipe1.Location = new System.Drawing.Point(70, 276);
+            this.Pipe1.Location = new System.Drawing.Point(803, 586);
             this.Pipe1.Name = "Pipe1";
             this.Pipe1.Size = new System.Drawing.Size(100, 50);
             this.Pipe1.TabIndex = 1;
@@ -64,7 +65,7 @@ namespace FlappyForm
             // Pipe2
             // 
             this.Pipe2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.Pipe2.Location = new System.Drawing.Point(70, 346);
+            this.Pipe2.Location = new System.Drawing.Point(803, -2);
             this.Pipe2.Name = "Pipe2";
             this.Pipe2.Size = new System.Drawing.Size(100, 50);
             this.Pipe2.TabIndex = 2;
@@ -74,7 +75,7 @@ namespace FlappyForm
             // 
             this.currenScore.AutoSize = true;
             this.currenScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.currenScore.Location = new System.Drawing.Point(211, 33);
+            this.currenScore.Location = new System.Drawing.Point(20, 9);
             this.currenScore.Name = "currenScore";
             this.currenScore.Size = new System.Drawing.Size(124, 39);
             this.currenScore.TabIndex = 3;
@@ -86,10 +87,11 @@ namespace FlappyForm
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Controls.Add(this.HSButton);
             this.panel1.Controls.Add(this.StartButton);
-            this.panel1.Location = new System.Drawing.Point(510, 81);
+            this.panel1.Location = new System.Drawing.Point(344, 147);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(265, 315);
             this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // StartButton
             // 
@@ -120,12 +122,22 @@ namespace FlappyForm
             this.ExitButton.Text = "Exit";
             this.ExitButton.UseVisualStyleBackColor = true;
             // 
+            // Ground
+            // 
+            this.Ground.BackColor = System.Drawing.Color.Gold;
+            this.Ground.Location = new System.Drawing.Point(-5, 642);
+            this.Ground.Name = "Ground";
+            this.Ground.Size = new System.Drawing.Size(1010, 57);
+            this.Ground.TabIndex = 5;
+            this.Ground.Paint += new System.Windows.Forms.PaintEventHandler(this.Ground_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(993, 689);
+            this.Controls.Add(this.Ground);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.currenScore);
             this.Controls.Add(this.Pipe2);
@@ -152,6 +164,7 @@ namespace FlappyForm
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button HSButton;
         private System.Windows.Forms.Button StartButton;
+        private System.Windows.Forms.Panel Ground;
     }
 }
 
