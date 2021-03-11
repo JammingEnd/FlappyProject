@@ -33,7 +33,7 @@ namespace FlappyForm
             this.FlappyBird = new System.Windows.Forms.PictureBox();
             this.pipe1 = new System.Windows.Forms.PictureBox();
             this.pipe2 = new System.Windows.Forms.PictureBox();
-            this.currenScore = new System.Windows.Forms.Label();
+            this.currentScore = new System.Windows.Forms.Label();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.HSButton = new System.Windows.Forms.Button();
@@ -41,10 +41,21 @@ namespace FlappyForm
             this.Ground = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.birdTimer = new System.Windows.Forms.Timer(this.components);
+            this.pipe4 = new System.Windows.Forms.PictureBox();
+            this.pipe5 = new System.Windows.Forms.PictureBox();
+            this.GOText = new System.Windows.Forms.Label();
+            this.detectPipe1 = new System.Windows.Forms.PictureBox();
+            this.detectPipe2 = new System.Windows.Forms.PictureBox();
+            this.pointTimer = new System.Windows.Forms.Timer(this.components);
+            this.menuScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             this.MenuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detectPipe1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detectPipe2)).BeginInit();
             this.SuspendLayout();
             // 
             // FlappyBird
@@ -56,13 +67,14 @@ namespace FlappyForm
             this.FlappyBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.FlappyBird.TabIndex = 0;
             this.FlappyBird.TabStop = false;
+            this.FlappyBird.Click += new System.EventHandler(this.FlappyBird_Click);
             // 
             // pipe1
             // 
             this.pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.pipe1.Location = new System.Drawing.Point(803, 340);
+            this.pipe1.Location = new System.Drawing.Point(1784, 604);
             this.pipe1.Name = "pipe1";
-            this.pipe1.Size = new System.Drawing.Size(100, 337);
+            this.pipe1.Size = new System.Drawing.Size(100, 451);
             this.pipe1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pipe1.TabIndex = 1;
             this.pipe1.TabStop = false;
@@ -70,30 +82,33 @@ namespace FlappyForm
             // pipe2
             // 
             this.pipe2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.pipe2.Location = new System.Drawing.Point(803, 0);
+            this.pipe2.Location = new System.Drawing.Point(1784, -2);
             this.pipe2.Name = "pipe2";
             this.pipe2.Size = new System.Drawing.Size(100, 195);
             this.pipe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pipe2.TabIndex = 2;
             this.pipe2.TabStop = false;
+            this.pipe2.Click += new System.EventHandler(this.pipe2_Click);
             // 
-            // currenScore
+            // currentScore
             // 
-            this.currenScore.AutoSize = true;
-            this.currenScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.currenScore.Location = new System.Drawing.Point(20, 9);
-            this.currenScore.Name = "currenScore";
-            this.currenScore.Size = new System.Drawing.Size(124, 39);
-            this.currenScore.TabIndex = 3;
-            this.currenScore.Text = "Score: ";
+            this.currentScore.AutoSize = true;
+            this.currentScore.BackColor = System.Drawing.Color.Transparent;
+            this.currentScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.currentScore.Location = new System.Drawing.Point(20, 9);
+            this.currentScore.Name = "currentScore";
+            this.currentScore.Size = new System.Drawing.Size(124, 39);
+            this.currentScore.TabIndex = 3;
+            this.currentScore.Text = "Score: ";
             // 
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.Khaki;
+            this.MenuPanel.Controls.Add(this.menuScore);
             this.MenuPanel.Controls.Add(this.ExitButton);
             this.MenuPanel.Controls.Add(this.HSButton);
             this.MenuPanel.Controls.Add(this.StartButton);
-            this.MenuPanel.Location = new System.Drawing.Point(344, 147);
+            this.MenuPanel.Location = new System.Drawing.Point(727, 283);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(265, 315);
             this.MenuPanel.TabIndex = 4;
@@ -132,9 +147,9 @@ namespace FlappyForm
             // Ground
             // 
             this.Ground.BackColor = System.Drawing.Color.Gold;
-            this.Ground.Location = new System.Drawing.Point(-5, 642);
+            this.Ground.Location = new System.Drawing.Point(-5, 879);
             this.Ground.Name = "Ground";
-            this.Ground.Size = new System.Drawing.Size(1010, 57);
+            this.Ground.Size = new System.Drawing.Size(2031, 171);
             this.Ground.TabIndex = 5;
             // 
             // timer1
@@ -149,15 +164,88 @@ namespace FlappyForm
             this.birdTimer.Interval = 10;
             this.birdTimer.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // pipe4
+            // 
+            this.pipe4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipe4.Location = new System.Drawing.Point(998, -2);
+            this.pipe4.Name = "pipe4";
+            this.pipe4.Size = new System.Drawing.Size(100, 195);
+            this.pipe4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipe4.TabIndex = 6;
+            this.pipe4.TabStop = false;
+            // 
+            // pipe5
+            // 
+            this.pipe5.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipe5.Location = new System.Drawing.Point(998, 604);
+            this.pipe5.Name = "pipe5";
+            this.pipe5.Size = new System.Drawing.Size(100, 451);
+            this.pipe5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipe5.TabIndex = 7;
+            this.pipe5.TabStop = false;
+            // 
+            // GOText
+            // 
+            this.GOText.AutoSize = true;
+            this.GOText.Font = new System.Drawing.Font("Mongolian Baiti", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GOText.Location = new System.Drawing.Point(765, 230);
+            this.GOText.Name = "GOText";
+            this.GOText.Size = new System.Drawing.Size(182, 36);
+            this.GOText.TabIndex = 8;
+            this.GOText.Text = "Game Over";
+            // 
+            // detectPipe1
+            // 
+            this.detectPipe1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.detectPipe1.Location = new System.Drawing.Point(1104, -2);
+            this.detectPipe1.Name = "detectPipe1";
+            this.detectPipe1.Size = new System.Drawing.Size(10, 876);
+            this.detectPipe1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.detectPipe1.TabIndex = 9;
+            this.detectPipe1.TabStop = false;
+            this.detectPipe1.Visible = false;
+            // 
+            // detectPipe2
+            // 
+            this.detectPipe2.BackColor = System.Drawing.Color.MidnightBlue;
+            this.detectPipe2.Location = new System.Drawing.Point(1890, -2);
+            this.detectPipe2.Name = "detectPipe2";
+            this.detectPipe2.Size = new System.Drawing.Size(10, 876);
+            this.detectPipe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.detectPipe2.TabIndex = 10;
+            this.detectPipe2.TabStop = false;
+            this.detectPipe2.Visible = false;
+            // 
+            // pointTimer
+            // 
+            this.pointTimer.Enabled = true;
+            this.pointTimer.Interval = 120;
+            this.pointTimer.Tick += new System.EventHandler(this.pointTimer_Tick);
+            // 
+            // menuScore
+            // 
+            this.menuScore.AutoSize = true;
+            this.menuScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuScore.Location = new System.Drawing.Point(135, 246);
+            this.menuScore.Name = "menuScore";
+            this.menuScore.Size = new System.Drawing.Size(85, 29);
+            this.menuScore.TabIndex = 3;
+            this.menuScore.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(993, 689);
-            this.Controls.Add(this.FlappyBird);
+            this.ClientSize = new System.Drawing.Size(1924, 1041);
             this.Controls.Add(this.MenuPanel);
-            this.Controls.Add(this.currenScore);
+            this.Controls.Add(this.currentScore);
+            this.Controls.Add(this.detectPipe2);
+            this.Controls.Add(this.detectPipe1);
+            this.Controls.Add(this.GOText);
+            this.Controls.Add(this.pipe5);
+            this.Controls.Add(this.pipe4);
+            this.Controls.Add(this.FlappyBird);
             this.Controls.Add(this.pipe2);
             this.Controls.Add(this.pipe1);
             this.Controls.Add(this.Ground);
@@ -168,6 +256,11 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).EndInit();
             this.MenuPanel.ResumeLayout(false);
+            this.MenuPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detectPipe1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detectPipe2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,7 +271,7 @@ namespace FlappyForm
         private System.Windows.Forms.PictureBox FlappyBird;
         private System.Windows.Forms.PictureBox pipe1;
         private System.Windows.Forms.PictureBox pipe2;
-        private System.Windows.Forms.Label currenScore;
+        private System.Windows.Forms.Label currentScore;
         private System.Windows.Forms.Panel MenuPanel;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button HSButton;
@@ -186,6 +279,13 @@ namespace FlappyForm
         private System.Windows.Forms.Panel Ground;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer birdTimer;
+        private System.Windows.Forms.PictureBox pipe4;
+        private System.Windows.Forms.PictureBox pipe5;
+        private System.Windows.Forms.Label GOText;
+        private System.Windows.Forms.PictureBox detectPipe1;
+        private System.Windows.Forms.PictureBox detectPipe2;
+        private System.Windows.Forms.Timer pointTimer;
+        private System.Windows.Forms.Label menuScore;
     }
 }
 
