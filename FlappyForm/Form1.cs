@@ -8,8 +8,9 @@ namespace FlappyForm
     {
         int flappyJumpSpeed = 80; //default for now
         int gameSpeed = 10; //default for now
-        int score = 0;
-        int tableOf = 5;
+        int score = 0; //default starting score
+        int tableOf = 5; //preset for the table of 5
+        int startingLives = 3; //should be self explenatory 
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace FlappyForm
             movepipe(gameSpeed);
             gameOver();
             speedUp();
+            lifeCounter(startingLives);
            // addPoints();
         }
 
@@ -84,6 +86,25 @@ namespace FlappyForm
              
             }
         }
+        void lifeCounter(int lives)
+        {
+            if(lives == 3)
+            {
+                //all hearth visible
+            }
+            else if(lives == 2)
+            {
+                //2 lives visible
+            }
+            else if(lives == 1)
+            {
+                //1 live visible
+            }
+            else
+            {
+                //reset application
+            }
+        }
         void speedUp()
         {
             if(score == tableOf)
@@ -114,6 +135,7 @@ namespace FlappyForm
                 menuScore.Visible = true;
                 menuScore.Text = score.ToString();
                 gameSpeed = 10;
+                startingLives = startingLives - 1;
 
             }
          
