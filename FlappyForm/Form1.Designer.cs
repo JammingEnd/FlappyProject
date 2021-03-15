@@ -35,6 +35,10 @@ namespace FlappyForm
             this.pipe2 = new System.Windows.Forms.PictureBox();
             this.currentScore = new System.Windows.Forms.Label();
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.life3 = new System.Windows.Forms.PictureBox();
+            this.life2 = new System.Windows.Forms.PictureBox();
+            this.life1 = new System.Windows.Forms.PictureBox();
+            this.menuScore = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.HSButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
@@ -47,11 +51,13 @@ namespace FlappyForm
             this.detectPipe1 = new System.Windows.Forms.PictureBox();
             this.detectPipe2 = new System.Windows.Forms.PictureBox();
             this.pointTimer = new System.Windows.Forms.Timer(this.components);
-            this.menuScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             this.MenuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.life3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.life2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detectPipe1)).BeginInit();
@@ -104,14 +110,55 @@ namespace FlappyForm
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.Khaki;
+            this.MenuPanel.Controls.Add(this.life3);
+            this.MenuPanel.Controls.Add(this.life2);
+            this.MenuPanel.Controls.Add(this.life1);
             this.MenuPanel.Controls.Add(this.menuScore);
             this.MenuPanel.Controls.Add(this.ExitButton);
             this.MenuPanel.Controls.Add(this.HSButton);
             this.MenuPanel.Controls.Add(this.StartButton);
-            this.MenuPanel.Location = new System.Drawing.Point(727, 283);
+            this.MenuPanel.Location = new System.Drawing.Point(728, 283);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(265, 315);
+            this.MenuPanel.Size = new System.Drawing.Size(472, 315);
             this.MenuPanel.TabIndex = 4;
+            // 
+            // life3
+            // 
+            this.life3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.life3.Location = new System.Drawing.Point(302, 144);
+            this.life3.Name = "life3";
+            this.life3.Size = new System.Drawing.Size(78, 72);
+            this.life3.TabIndex = 6;
+            this.life3.TabStop = false;
+            // 
+            // life2
+            // 
+            this.life2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.life2.Location = new System.Drawing.Point(359, 44);
+            this.life2.Name = "life2";
+            this.life2.Size = new System.Drawing.Size(78, 72);
+            this.life2.TabIndex = 5;
+            this.life2.TabStop = false;
+            // 
+            // life1
+            // 
+            this.life1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.life1.Location = new System.Drawing.Point(244, 44);
+            this.life1.Name = "life1";
+            this.life1.Size = new System.Drawing.Size(78, 72);
+            this.life1.TabIndex = 4;
+            this.life1.TabStop = false;
+            // 
+            // menuScore
+            // 
+            this.menuScore.AutoSize = true;
+            this.menuScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuScore.Location = new System.Drawing.Point(135, 246);
+            this.menuScore.Name = "menuScore";
+            this.menuScore.Size = new System.Drawing.Size(78, 29);
+            this.menuScore.TabIndex = 3;
+            this.menuScore.Text = "score";
+            this.menuScore.Click += new System.EventHandler(this.menuScore_Click);
             // 
             // ExitButton
             // 
@@ -161,7 +208,7 @@ namespace FlappyForm
             // birdTimer
             // 
             this.birdTimer.Enabled = true;
-            this.birdTimer.Interval = 10;
+            this.birdTimer.Interval = 50;
             this.birdTimer.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // pipe4
@@ -190,7 +237,7 @@ namespace FlappyForm
             this.GOText.Font = new System.Drawing.Font("Mongolian Baiti", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GOText.Location = new System.Drawing.Point(765, 230);
             this.GOText.Name = "GOText";
-            this.GOText.Size = new System.Drawing.Size(182, 36);
+            this.GOText.Size = new System.Drawing.Size(179, 35);
             this.GOText.TabIndex = 8;
             this.GOText.Text = "Game Over";
             // 
@@ -218,19 +265,8 @@ namespace FlappyForm
             // 
             // pointTimer
             // 
-            this.pointTimer.Enabled = true;
             this.pointTimer.Interval = 120;
             this.pointTimer.Tick += new System.EventHandler(this.pointTimer_Tick);
-            // 
-            // menuScore
-            // 
-            this.menuScore.AutoSize = true;
-            this.menuScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuScore.Location = new System.Drawing.Point(135, 246);
-            this.menuScore.Name = "menuScore";
-            this.menuScore.Size = new System.Drawing.Size(85, 29);
-            this.menuScore.TabIndex = 3;
-            this.menuScore.Text = "label1";
             // 
             // Form1
             // 
@@ -257,6 +293,9 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).EndInit();
             this.MenuPanel.ResumeLayout(false);
             this.MenuPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.life3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.life2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.life1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detectPipe1)).EndInit();
@@ -286,6 +325,9 @@ namespace FlappyForm
         private System.Windows.Forms.PictureBox detectPipe2;
         private System.Windows.Forms.Timer pointTimer;
         private System.Windows.Forms.Label menuScore;
+        private System.Windows.Forms.PictureBox life3;
+        private System.Windows.Forms.PictureBox life2;
+        private System.Windows.Forms.PictureBox life1;
     }
 }
 
