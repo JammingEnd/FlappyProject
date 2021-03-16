@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace FlappyForm
 {
-    public static class ModifyProgressBarColor
-    {
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
-        public static void SetState(this ProgressBar pBar, int state)
-        {
-            SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
-        }
-    } //progressbar recolor , POG!
+ 
     public partial class Form1 : Form
     {
         private int flappyJumpSpeed = 80; //default for now
         private int gameSpeed = 10; //default for now
         private int score = 0; //default starting score
         private int tableOf = 5; //preset for the table of 5
+        private int defaultLives = 3;
         private int startingLives = 3; //should be self explenatory
         int totalScore = 0;
 
@@ -41,7 +35,7 @@ namespace FlappyForm
             healthbar.Maximum = startingLives;
             healthbar.Minimum = 0;
             healthbar.Value = healthbar.Maximum;
-            healthbar.SetState(2);
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -110,22 +104,22 @@ namespace FlappyForm
 
         private void addPoints()
         {
-            if (pipe1.Location.X <= 31 || pipe1.Location.X >= 29)
+            if (pipe1.Location.X >= 31 && pipe1.Location.X <= 29)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe1.Location.X <= 31 && pipe1.Location.X >= 29)
+            if (pipe1.Location.X >= 31 && pipe1.Location.X <= 29)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe1.Location.X <= 31 && pipe1.Location.X >= 29)
+            if (pipe1.Location.X >= 31 && pipe1.Location.X <= 29)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe1.Location.X <= 31 && pipe1.Location.X >= 29)
+            if (pipe1.Location.X >= 31 && pipe1.Location.X <= 29)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
@@ -150,23 +144,34 @@ namespace FlappyForm
                 totalScore = totalScore + score;
                 menuScore.Text = "Total score:" + totalScore.ToString();
 
-
-                #region Default position
-                FlappyBird.Top = 265;
-                pipe1.Location = new System.Drawing.Point(1784, 604);
-                pipe2.Location = new System.Drawing.Point(1784, -2);
-                pipe4.Location = new System.Drawing.Point(998, -2);
-                pipe5.Location = new System.Drawing.Point(998, 604);
-                pipe1.Height = 451;
-                pipe2.Height = 195;
-                pipe4.Height = 195;
-                pipe5.Height = 451;
+                Reset();
                 
-                #endregion
-
+               
             }
         }
+      
+        private void Reset()
+        {
+            #region Default Form
+            FlappyBird.Top = 265;
+            pipe1.Location = new System.Drawing.Point(1784, 604);
+            pipe2.Location = new System.Drawing.Point(1784, -2);
+            pipe4.Location = new System.Drawing.Point(998, -2);
+            pipe5.Location = new System.Drawing.Point(998, 604);
+            pipe1.Height = 451;
+            pipe2.Height = 195;
+            pipe4.Height = 195;
+            pipe5.Height = 451;
 
+            #endregion
+        }
+        private void LifeReset()
+        {
+            if (startingLives == 0)
+            {
+                startingLives = defaultLives;
+            }
+        }
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -187,6 +192,7 @@ namespace FlappyForm
             GOText.Visible = false;
             currentScore.Visible = true;
             score = 0;
+            LifeReset();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)

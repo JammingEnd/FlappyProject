@@ -35,6 +35,8 @@ namespace FlappyForm
             this.pipe2 = new System.Windows.Forms.PictureBox();
             this.currentScore = new System.Windows.Forms.Label();
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.healthbar = new System.Windows.Forms.ProgressBar();
+            this.lifeLabel = new System.Windows.Forms.Label();
             this.menuScore = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.HSButton = new System.Windows.Forms.Button();
@@ -45,8 +47,6 @@ namespace FlappyForm
             this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipe5 = new System.Windows.Forms.PictureBox();
             this.GOText = new System.Windows.Forms.Label();
-            this.lifeLabel = new System.Windows.Forms.Label();
-            this.healthbar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
@@ -111,6 +111,25 @@ namespace FlappyForm
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(472, 315);
             this.MenuPanel.TabIndex = 4;
+            // 
+            // healthbar
+            // 
+            this.healthbar.ForeColor = System.Drawing.Color.Red;
+            this.healthbar.Location = new System.Drawing.Point(302, 164);
+            this.healthbar.Name = "healthbar";
+            this.healthbar.Size = new System.Drawing.Size(85, 23);
+            this.healthbar.TabIndex = 5;
+            // 
+            // lifeLabel
+            // 
+            this.lifeLabel.AutoSize = true;
+            this.lifeLabel.Font = new System.Drawing.Font("Microsoft Uighur", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lifeLabel.Location = new System.Drawing.Point(294, 83);
+            this.lifeLabel.Name = "lifeLabel";
+            this.lifeLabel.Size = new System.Drawing.Size(93, 46);
+            this.lifeLabel.TabIndex = 4;
+            this.lifeLabel.Text = "LIVES";
+            this.lifeLabel.Click += new System.EventHandler(this.lifeLabel_Click);
             // 
             // menuScore
             // 
@@ -203,24 +222,6 @@ namespace FlappyForm
             this.GOText.Size = new System.Drawing.Size(179, 35);
             this.GOText.TabIndex = 8;
             this.GOText.Text = "Game Over";
-            // 
-            // lifeLabel
-            // 
-            this.lifeLabel.AutoSize = true;
-            this.lifeLabel.Font = new System.Drawing.Font("Microsoft Uighur", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lifeLabel.Location = new System.Drawing.Point(294, 83);
-            this.lifeLabel.Name = "lifeLabel";
-            this.lifeLabel.Size = new System.Drawing.Size(93, 46);
-            this.lifeLabel.TabIndex = 4;
-            this.lifeLabel.Text = "LIVES";
-            this.lifeLabel.Click += new System.EventHandler(this.lifeLabel_Click);
-            // 
-            // healthbar
-            // 
-            this.healthbar.Location = new System.Drawing.Point(302, 164);
-            this.healthbar.Name = "healthbar";
-            this.healthbar.Size = new System.Drawing.Size(85, 23);
-            this.healthbar.TabIndex = 5;
             // 
             // Form1
             // 
