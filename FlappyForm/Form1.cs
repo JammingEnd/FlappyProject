@@ -1,8 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace FlappyForm
 {
+    public static class ModifyProgressBarColor
+    {
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
+        public static void SetState(this ProgressBar pBar, int state)
+        {
+            SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
+        }
+    } //progressbar recolor , POG!
     public partial class Form1 : Form
     {
         private int flappyJumpSpeed = 80; //default for now
@@ -10,14 +20,14 @@ namespace FlappyForm
         private int score = 0; //default starting score
         private int tableOf = 5; //preset for the table of 5
         private int startingLives = 3; //should be self explenatory
+        int totalScore = 0;
 
         public Form1()
         {
             InitializeComponent();
-            
-          
+
             WindowState = FormWindowState.Maximized;
-         
+
             FlappyBird.BringToFront();
             MenuPanel.Visible = true;
             timer1.Enabled = false;
@@ -26,6 +36,12 @@ namespace FlappyForm
             GOText.Visible = false;
             currentScore.Visible = false;
             menuScore.Visible = false;
+            KeyPreview = true;
+            lifeLabel.Text = "lives:" + startingLives.ToString();
+            healthbar.Maximum = startingLives;
+            healthbar.Minimum = 0;
+            healthbar.Value = healthbar.Maximum;
+            healthbar.SetState(2);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -34,7 +50,7 @@ namespace FlappyForm
             gameOver();
             speedUp();
             lifeCounter(startingLives);
-            // addPoints();
+            addPoints();
         }
 
         private Random h = new Random();
@@ -75,45 +91,11 @@ namespace FlappyForm
                 pipe4.Left = 1800;
                 pipe4.Height = h.Next(100, 500);
             }
-            if (detectPipe1.Left >= 0)
-            { detectPipe1.Left += -speed; }
-            else
-            {
-                detectPipe1.Left = 1800;
-            }
-            if (detectPipe2.Left >= 0)
-            { detectPipe2.Left += -speed; }
-            else
-            {
-                detectPipe2.Left = 1800;
-            }
         }
 
         private void lifeCounter(int lives)  //display lives
         {
-            if (lives == 3)
-            {
-                life1.Visible = true;
-                life2.Visible = true;
-                life3.Visible = true;
-            }
-            else if (lives == 2)
-            {
-                life1.Visible = false;
-                life2.Visible = true;
-                life3.Visible = true;
-            }
-            else if (lives == 1)
-            {
-                life1.Visible = false;
-                life2.Visible = false;
-                life3.Visible = true;
-            }
-            else if (lives == 0)
-            {
-                life3.Visible = false;
-                // Application.Restart();
-            }
+           
         }
 
         private void speedUp()
@@ -125,28 +107,28 @@ namespace FlappyForm
                 currentScore.Text = "speed up!";
             }
         }
-       
+
         private void addPoints()
         {
-            
-            if ((FlappyBird.Bounds.IntersectsWith(detectPipe1.Bounds)) || (FlappyBird.Bounds.IntersectsWith(detectPipe2.Bounds)))
+            if (pipe1.Location.X <= 31 || pipe1.Location.X >= 29)
             {
-              
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
-                if (life1.Visible == true)
-                {
-                   
-                }
-                else if (life1.Visible == false && life2.Visible == true)
-                {
-                    
-                }
-                else if (life3.Visible == false)
-                {
-                   
-                }
-                
+            }
+            if (pipe1.Location.X <= 31 && pipe1.Location.X >= 29)
+            {
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
+            }
+            if (pipe1.Location.X <= 31 && pipe1.Location.X >= 29)
+            {
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
+            }
+            if (pipe1.Location.X <= 31 && pipe1.Location.X >= 29)
+            {
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
             }
         }
 
@@ -160,9 +142,28 @@ namespace FlappyForm
                 flappyJumpSpeed = 0;
                 GOText.Visible = true;
                 menuScore.Visible = true;
-                menuScore.Text = score.ToString();
                 gameSpeed = 10;
                 startingLives = startingLives - 1;
+                healthbar.Value = startingLives;
+                lifeLabel.Text = startingLives.ToString();
+                StartButton.Enabled = true;
+                totalScore = totalScore + score;
+                menuScore.Text = "Total score:" + totalScore.ToString();
+
+
+                #region Default position
+                FlappyBird.Top = 265;
+                pipe1.Location = new System.Drawing.Point(1784, 604);
+                pipe2.Location = new System.Drawing.Point(1784, -2);
+                pipe4.Location = new System.Drawing.Point(998, -2);
+                pipe5.Location = new System.Drawing.Point(998, 604);
+                pipe1.Height = 451;
+                pipe2.Height = 195;
+                pipe4.Height = 195;
+                pipe5.Height = 451;
+                
+                #endregion
+
             }
         }
 
@@ -173,12 +174,15 @@ namespace FlappyForm
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            //timer1.Enabled = true;
+            timer1.Enabled = true;
             birdTimer.Enabled = true;
-            
-            birdTimer.Start();
+            if (flappyJumpSpeed == 0)
+            {
+                flappyJumpSpeed = 80;
+            }
+           
 
-
+            StartButton.Enabled = false;
             MenuPanel.Visible = false;
             GOText.Visible = false;
             currentScore.Visible = true;
@@ -208,13 +212,15 @@ namespace FlappyForm
         {
         }
 
-        private void pointTimer_Tick(object sender, EventArgs e)
-        {
-           addPoints();
-        }
+        
 
         private void menuScore_Click(object sender, EventArgs e)
         {
+        }
+
+        private void lifeLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

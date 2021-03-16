@@ -35,9 +35,6 @@ namespace FlappyForm
             this.pipe2 = new System.Windows.Forms.PictureBox();
             this.currentScore = new System.Windows.Forms.Label();
             this.MenuPanel = new System.Windows.Forms.Panel();
-            this.life3 = new System.Windows.Forms.PictureBox();
-            this.life2 = new System.Windows.Forms.PictureBox();
-            this.life1 = new System.Windows.Forms.PictureBox();
             this.menuScore = new System.Windows.Forms.Label();
             this.ExitButton = new System.Windows.Forms.Button();
             this.HSButton = new System.Windows.Forms.Button();
@@ -48,20 +45,14 @@ namespace FlappyForm
             this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipe5 = new System.Windows.Forms.PictureBox();
             this.GOText = new System.Windows.Forms.Label();
-            this.detectPipe1 = new System.Windows.Forms.PictureBox();
-            this.detectPipe2 = new System.Windows.Forms.PictureBox();
-            this.pointTimer = new System.Windows.Forms.Timer(this.components);
+            this.lifeLabel = new System.Windows.Forms.Label();
+            this.healthbar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             this.MenuPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.life3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detectPipe1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detectPipe2)).BeginInit();
             this.SuspendLayout();
             // 
             // FlappyBird
@@ -110,9 +101,8 @@ namespace FlappyForm
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.Khaki;
-            this.MenuPanel.Controls.Add(this.life3);
-            this.MenuPanel.Controls.Add(this.life2);
-            this.MenuPanel.Controls.Add(this.life1);
+            this.MenuPanel.Controls.Add(this.healthbar);
+            this.MenuPanel.Controls.Add(this.lifeLabel);
             this.MenuPanel.Controls.Add(this.menuScore);
             this.MenuPanel.Controls.Add(this.ExitButton);
             this.MenuPanel.Controls.Add(this.HSButton);
@@ -121,33 +111,6 @@ namespace FlappyForm
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(472, 315);
             this.MenuPanel.TabIndex = 4;
-            // 
-            // life3
-            // 
-            this.life3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.life3.Location = new System.Drawing.Point(302, 144);
-            this.life3.Name = "life3";
-            this.life3.Size = new System.Drawing.Size(78, 72);
-            this.life3.TabIndex = 6;
-            this.life3.TabStop = false;
-            // 
-            // life2
-            // 
-            this.life2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.life2.Location = new System.Drawing.Point(359, 44);
-            this.life2.Name = "life2";
-            this.life2.Size = new System.Drawing.Size(78, 72);
-            this.life2.TabIndex = 5;
-            this.life2.TabStop = false;
-            // 
-            // life1
-            // 
-            this.life1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.life1.Location = new System.Drawing.Point(244, 44);
-            this.life1.Name = "life1";
-            this.life1.Size = new System.Drawing.Size(78, 72);
-            this.life1.TabIndex = 4;
-            this.life1.TabStop = false;
             // 
             // menuScore
             // 
@@ -208,7 +171,7 @@ namespace FlappyForm
             // birdTimer
             // 
             this.birdTimer.Enabled = true;
-            this.birdTimer.Interval = 50;
+            this.birdTimer.Interval = 10;
             this.birdTimer.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // pipe4
@@ -241,32 +204,23 @@ namespace FlappyForm
             this.GOText.TabIndex = 8;
             this.GOText.Text = "Game Over";
             // 
-            // detectPipe1
+            // lifeLabel
             // 
-            this.detectPipe1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.detectPipe1.Location = new System.Drawing.Point(1104, -2);
-            this.detectPipe1.Name = "detectPipe1";
-            this.detectPipe1.Size = new System.Drawing.Size(10, 876);
-            this.detectPipe1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.detectPipe1.TabIndex = 9;
-            this.detectPipe1.TabStop = false;
-            this.detectPipe1.Visible = false;
+            this.lifeLabel.AutoSize = true;
+            this.lifeLabel.Font = new System.Drawing.Font("Microsoft Uighur", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lifeLabel.Location = new System.Drawing.Point(294, 83);
+            this.lifeLabel.Name = "lifeLabel";
+            this.lifeLabel.Size = new System.Drawing.Size(93, 46);
+            this.lifeLabel.TabIndex = 4;
+            this.lifeLabel.Text = "LIVES";
+            this.lifeLabel.Click += new System.EventHandler(this.lifeLabel_Click);
             // 
-            // detectPipe2
+            // healthbar
             // 
-            this.detectPipe2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.detectPipe2.Location = new System.Drawing.Point(1890, -2);
-            this.detectPipe2.Name = "detectPipe2";
-            this.detectPipe2.Size = new System.Drawing.Size(10, 876);
-            this.detectPipe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.detectPipe2.TabIndex = 10;
-            this.detectPipe2.TabStop = false;
-            this.detectPipe2.Visible = false;
-            // 
-            // pointTimer
-            // 
-            this.pointTimer.Interval = 120;
-            this.pointTimer.Tick += new System.EventHandler(this.pointTimer_Tick);
+            this.healthbar.Location = new System.Drawing.Point(302, 164);
+            this.healthbar.Name = "healthbar";
+            this.healthbar.Size = new System.Drawing.Size(85, 23);
+            this.healthbar.TabIndex = 5;
             // 
             // Form1
             // 
@@ -276,8 +230,6 @@ namespace FlappyForm
             this.ClientSize = new System.Drawing.Size(1924, 1041);
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.currentScore);
-            this.Controls.Add(this.detectPipe2);
-            this.Controls.Add(this.detectPipe1);
             this.Controls.Add(this.GOText);
             this.Controls.Add(this.pipe5);
             this.Controls.Add(this.pipe4);
@@ -293,13 +245,8 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).EndInit();
             this.MenuPanel.ResumeLayout(false);
             this.MenuPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.life3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.life1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detectPipe1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.detectPipe2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,13 +268,9 @@ namespace FlappyForm
         private System.Windows.Forms.PictureBox pipe4;
         private System.Windows.Forms.PictureBox pipe5;
         private System.Windows.Forms.Label GOText;
-        private System.Windows.Forms.PictureBox detectPipe1;
-        private System.Windows.Forms.PictureBox detectPipe2;
-        private System.Windows.Forms.Timer pointTimer;
         private System.Windows.Forms.Label menuScore;
-        private System.Windows.Forms.PictureBox life3;
-        private System.Windows.Forms.PictureBox life2;
-        private System.Windows.Forms.PictureBox life1;
+        private System.Windows.Forms.ProgressBar healthbar;
+        private System.Windows.Forms.Label lifeLabel;
     }
 }
 
