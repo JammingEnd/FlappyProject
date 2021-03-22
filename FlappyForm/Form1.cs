@@ -104,7 +104,8 @@ namespace FlappyForm
                 pipeTop1.Left = 1800;
                 pipeTop1.Height = h.Next(100, 300);//random value between the entered numbers
                 PipeBottom1.Top = pipeTop1.Bottom + betweenRandom.Next(150, 250);
-              //  pipeTop1.Left = 1800 + offRandom.Next(0, 150);
+                
+                //  pipeTop1.Left = 1800 + offRandom.Next(0, 150);
             }
         }
 
@@ -183,10 +184,14 @@ namespace FlappyForm
             pipe2.Location = new System.Drawing.Point(1784, -2);
             pipe4.Location = new System.Drawing.Point(998, -2);
             pipe5.Location = new System.Drawing.Point(998, 604);
+           // pipeTop1.Location = new System.Drawing.Point(,);
+           // PipeBottom1.Location = new System.Drawing.Point(,);
             pipe1.Height = 451;
             pipe2.Height = 195;
             pipe4.Height = 195;
             pipe5.Height = 451;
+            pipeTop1.Height = 195;
+            PipeBottom1.Height = 451;
 
             #endregion Default Form
         }
