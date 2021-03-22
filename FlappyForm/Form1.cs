@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace FlappyForm
 {
- 
     public partial class Form1 : Form
     {
         private int flappyJumpSpeed = 80; //default for now
@@ -14,7 +11,7 @@ namespace FlappyForm
         private int tableOf = 5; //preset for the table of 5
         private int defaultLives = 3;
         private int startingLives = 3; //should be self explenatory
-        int totalScore = 0;
+        private int totalScore = 0;
 
         public Form1()
         {
@@ -35,7 +32,21 @@ namespace FlappyForm
             healthbar.Maximum = startingLives;
             healthbar.Minimum = 0;
             healthbar.Value = healthbar.Maximum;
-            
+            StartupHeight();
+        }
+
+        private Random h = new Random(); //random height
+        private Random betweenRandom = new Random(); //random space between the pipes
+      //  private Random offRandom = new Random(); //pipe offset
+
+        private void StartupHeight()
+        {
+            pipe2.Height = h.Next(100, 300);//random value between the entered numbers
+            pipe1.Top = pipe2.Bottom + betweenRandom.Next(150, 250);
+            pipe4.Height = h.Next(100, 300);//random value between the entered numbers
+            pipe5.Top = pipe4.Bottom + betweenRandom.Next(150, 250);
+            pipeTop1.Height = h.Next(100, 300);//random value between the entered numbers
+            PipeBottom1.Top = pipeTop1.Bottom + betweenRandom.Next(150, 250);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -43,11 +54,8 @@ namespace FlappyForm
             movepipe(gameSpeed);
             gameOver();
             speedUp();
-            lifeCounter(startingLives);
             addPoints();
         }
-
-        private Random h = new Random();
 
         private void movepipe(int speed)
         {
@@ -56,18 +64,18 @@ namespace FlappyForm
             else
             {
                 pipe1.Left = 1800;
-                pipe1.Height = h.Next(50, 100);  //random value between the entered numbers
-                                                 // reversing height somewhay
             }
-
             if (pipe5.Left >= 0) //bottom pipe
             { pipe5.Left += -speed; }
             else
             {
                 pipe5.Left = 1800;
-                pipe5.Height = h.Next(50, 100);  //random value between the entered numbers
-
-                // reversing height somewhay
+            }
+            if (PipeBottom1.Left >= 0) //bottom pipe
+            { PipeBottom1.Left += -speed; }
+            else
+            {
+                PipeBottom1.Left = 1800;
             }
 
             if (pipe2.Left >= 0)  //top pipe
@@ -75,7 +83,9 @@ namespace FlappyForm
             else
             {
                 pipe2.Left = 1800;
-                pipe2.Height = h.Next(100, 500);
+                pipe2.Height = h.Next(100, 300);//random value between the entered numbers
+                pipe1.Top = pipe2.Bottom + betweenRandom.Next(150, 250);
+              //  pipe2.Left = 1800 + offRandom.Next(0, 150);
             }
 
             if (pipe4.Left >= 0)  //top pipe
@@ -83,13 +93,19 @@ namespace FlappyForm
             else
             {
                 pipe4.Left = 1800;
-                pipe4.Height = h.Next(100, 500);
+                pipe4.Height = h.Next(100, 300);//random value between the entered numbers
+                pipe5.Top = pipe4.Bottom + betweenRandom.Next(150, 250);
+              //  pipe4.Left = 1800 + offRandom.Next(0, 150);
             }
-        }
-
-        private void lifeCounter(int lives)  //display lives
-        {
-           
+            if (pipeTop1.Left >= 0)  //top pipe
+            { pipeTop1.Left += -speed; }
+            else
+            {
+                pipeTop1.Left = 1800;
+                pipeTop1.Height = h.Next(100, 300);//random value between the entered numbers
+                PipeBottom1.Top = pipeTop1.Bottom + betweenRandom.Next(150, 250);
+              //  pipeTop1.Left = 1800 + offRandom.Next(0, 150);
+            }
         }
 
         private void speedUp()
@@ -104,22 +120,32 @@ namespace FlappyForm
 
         private void addPoints()
         {
-            if (pipe1.Location.X >= 31 && pipe1.Location.X <= 29)
+            if (pipe1.Left == 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe1.Location.X >= 31 && pipe1.Location.X <= 29)
+            if (pipe2.Left == 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe1.Location.X >= 31 && pipe1.Location.X <= 29)
+            if (pipe5.Left == 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe1.Location.X >= 31 && pipe1.Location.X <= 29)
+            if (pipe4.Left == 0)
+            {
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
+            }
+            if (pipeTop1.Left == 0)
+            {
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
+            }
+            if (PipeBottom1.Left == 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
@@ -145,14 +171,13 @@ namespace FlappyForm
                 menuScore.Text = "Total score:" + totalScore.ToString();
 
                 Reset();
-                
-               
             }
         }
-      
+
         private void Reset()
         {
             #region Default Form
+
             FlappyBird.Top = 265;
             pipe1.Location = new System.Drawing.Point(1784, 604);
             pipe2.Location = new System.Drawing.Point(1784, -2);
@@ -163,8 +188,9 @@ namespace FlappyForm
             pipe4.Height = 195;
             pipe5.Height = 451;
 
-            #endregion
+            #endregion Default Form
         }
+
         private void LifeReset()
         {
             if (startingLives == 0)
@@ -172,6 +198,7 @@ namespace FlappyForm
                 startingLives = defaultLives;
             }
         }
+
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -185,7 +212,6 @@ namespace FlappyForm
             {
                 flappyJumpSpeed = 80;
             }
-           
 
             StartButton.Enabled = false;
             MenuPanel.Visible = false;
@@ -218,15 +244,12 @@ namespace FlappyForm
         {
         }
 
-        
-
         private void menuScore_Click(object sender, EventArgs e)
         {
         }
 
         private void lifeLabel_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -47,12 +47,16 @@ namespace FlappyForm
             this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipe5 = new System.Windows.Forms.PictureBox();
             this.GOText = new System.Windows.Forms.Label();
+            this.PipeBottom1 = new System.Windows.Forms.PictureBox();
+            this.pipeTop1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PipeBottom1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).BeginInit();
             this.SuspendLayout();
             // 
             // FlappyBird
@@ -71,7 +75,7 @@ namespace FlappyForm
             this.pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.pipe1.Location = new System.Drawing.Point(1784, 604);
             this.pipe1.Name = "pipe1";
-            this.pipe1.Size = new System.Drawing.Size(100, 451);
+            this.pipe1.Size = new System.Drawing.Size(100, 685);
             this.pipe1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pipe1.TabIndex = 1;
             this.pipe1.TabStop = false;
@@ -123,10 +127,10 @@ namespace FlappyForm
             // lifeLabel
             // 
             this.lifeLabel.AutoSize = true;
-            this.lifeLabel.Font = new System.Drawing.Font("Microsoft Uighur", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lifeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lifeLabel.Location = new System.Drawing.Point(294, 83);
             this.lifeLabel.Name = "lifeLabel";
-            this.lifeLabel.Size = new System.Drawing.Size(93, 46);
+            this.lifeLabel.Size = new System.Drawing.Size(131, 44);
             this.lifeLabel.TabIndex = 4;
             this.lifeLabel.Text = "LIVES";
             this.lifeLabel.Click += new System.EventHandler(this.lifeLabel_Click);
@@ -208,7 +212,7 @@ namespace FlappyForm
             this.pipe5.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.pipe5.Location = new System.Drawing.Point(998, 604);
             this.pipe5.Name = "pipe5";
-            this.pipe5.Size = new System.Drawing.Size(100, 451);
+            this.pipe5.Size = new System.Drawing.Size(100, 685);
             this.pipe5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pipe5.TabIndex = 7;
             this.pipe5.TabStop = false;
@@ -223,20 +227,42 @@ namespace FlappyForm
             this.GOText.TabIndex = 8;
             this.GOText.Text = "Game Over";
             // 
+            // PipeBottom1
+            // 
+            this.PipeBottom1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.PipeBottom1.Location = new System.Drawing.Point(341, 604);
+            this.PipeBottom1.Name = "PipeBottom1";
+            this.PipeBottom1.Size = new System.Drawing.Size(100, 685);
+            this.PipeBottom1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PipeBottom1.TabIndex = 10;
+            this.PipeBottom1.TabStop = false;
+            // 
+            // pipeTop1
+            // 
+            this.pipeTop1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipeTop1.Location = new System.Drawing.Point(341, -2);
+            this.pipeTop1.Name = "pipeTop1";
+            this.pipeTop1.Size = new System.Drawing.Size(100, 195);
+            this.pipeTop1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipeTop1.TabIndex = 9;
+            this.pipeTop1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(1924, 1041);
-            this.Controls.Add(this.MenuPanel);
-            this.Controls.Add(this.currentScore);
             this.Controls.Add(this.GOText);
+            this.Controls.Add(this.MenuPanel);
+            this.Controls.Add(this.PipeBottom1);
+            this.Controls.Add(this.pipeTop1);
+            this.Controls.Add(this.pipe1);
             this.Controls.Add(this.pipe5);
+            this.Controls.Add(this.currentScore);
             this.Controls.Add(this.pipe4);
             this.Controls.Add(this.FlappyBird);
             this.Controls.Add(this.pipe2);
-            this.Controls.Add(this.pipe1);
             this.Controls.Add(this.Ground);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -248,6 +274,8 @@ namespace FlappyForm
             this.MenuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PipeBottom1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,6 +300,8 @@ namespace FlappyForm
         private System.Windows.Forms.Label menuScore;
         private System.Windows.Forms.ProgressBar healthbar;
         private System.Windows.Forms.Label lifeLabel;
+        private System.Windows.Forms.PictureBox PipeBottom1;
+        private System.Windows.Forms.PictureBox pipeTop1;
     }
 }
 
