@@ -201,7 +201,7 @@ namespace FlappyForm
             if (startingLives == 0)
             {
                 startingLives = defaultLives;
-                totalScore = 0;
+                totalScore = 0;w
             }
         }
 

@@ -62,6 +62,7 @@ namespace FlappyForm
             // FlappyBird
             // 
             this.FlappyBird.BackColor = System.Drawing.Color.Lime;
+            this.FlappyBird.Image = global::FlappyForm.Properties.Resources.png_transparent_flappy_bird_bird_flight_bird_frame_animals_smiley;
             this.FlappyBird.Location = new System.Drawing.Point(131, 265);
             this.FlappyBird.Name = "FlappyBird";
             this.FlappyBird.Size = new System.Drawing.Size(100, 50);
