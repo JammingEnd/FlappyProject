@@ -118,7 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pipebottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pipebottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="achtergrond" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\achtergrond.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pipetop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pipetop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="png-transparent-flappy-bird-bird-flight-bird-frame-animals-smiley" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\png-transparent-flappy-bird-bird-flight-bird-frame-animals-smiley.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flappy-bird-pipe-png-7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flappy-bird-pipe-png-7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edd1642b77bcabee7fa18846b2f8ff9d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edd1642b77bcabee7fa18846b2f8ff9d.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -30,9 +30,7 @@ namespace FlappyForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.FlappyBird = new System.Windows.Forms.PictureBox();
-            this.pipe1 = new System.Windows.Forms.PictureBox();
-            this.pipe2 = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.currentScore = new System.Windows.Forms.Label();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.healthbar = new System.Windows.Forms.ProgressBar();
@@ -44,53 +42,23 @@ namespace FlappyForm
             this.Ground = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.birdTimer = new System.Windows.Forms.Timer(this.components);
-            this.pipe4 = new System.Windows.Forms.PictureBox();
-            this.pipe5 = new System.Windows.Forms.PictureBox();
             this.GOText = new System.Windows.Forms.Label();
+            this.pipe2 = new System.Windows.Forms.PictureBox();
+            this.pipe1 = new System.Windows.Forms.PictureBox();
+            this.FlappyBird = new System.Windows.Forms.PictureBox();
             this.PipeBottom1 = new System.Windows.Forms.PictureBox();
+            this.pipe5 = new System.Windows.Forms.PictureBox();
+            this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipeTop1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             this.MenuPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pipe4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pipe5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipeBottom1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // FlappyBird
-            // 
-            this.FlappyBird.BackColor = System.Drawing.Color.Lime;
-            this.FlappyBird.Image = global::FlappyForm.Properties.Resources.png_transparent_flappy_bird_bird_flight_bird_frame_animals_smiley;
-            this.FlappyBird.Location = new System.Drawing.Point(131, 265);
-            this.FlappyBird.Name = "FlappyBird";
-            this.FlappyBird.Size = new System.Drawing.Size(100, 50);
-            this.FlappyBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.FlappyBird.TabIndex = 0;
-            this.FlappyBird.TabStop = false;
-            this.FlappyBird.Click += new System.EventHandler(this.FlappyBird_Click);
-            // 
-            // pipe1
-            // 
-            this.pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.pipe1.Location = new System.Drawing.Point(1784, 604);
-            this.pipe1.Name = "pipe1";
-            this.pipe1.Size = new System.Drawing.Size(100, 685);
-            this.pipe1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pipe1.TabIndex = 1;
-            this.pipe1.TabStop = false;
-            // 
-            // pipe2
-            // 
-            this.pipe2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.pipe2.Location = new System.Drawing.Point(1784, -2);
-            this.pipe2.Name = "pipe2";
-            this.pipe2.Size = new System.Drawing.Size(100, 195);
-            this.pipe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pipe2.TabIndex = 2;
-            this.pipe2.TabStop = false;
-            this.pipe2.Click += new System.EventHandler(this.pipe2_Click);
             // 
             // currentScore
             // 
@@ -181,6 +149,7 @@ namespace FlappyForm
             // Ground
             // 
             this.Ground.BackColor = System.Drawing.Color.Gold;
+            this.Ground.BackgroundImage = global::FlappyForm.Properties.Resources.edd1642b77bcabee7fa18846b2f8ff9d;
             this.Ground.Location = new System.Drawing.Point(-5, 879);
             this.Ground.Name = "Ground";
             this.Ground.Size = new System.Drawing.Size(2031, 171);
@@ -198,29 +167,10 @@ namespace FlappyForm
             this.birdTimer.Interval = 10;
             this.birdTimer.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // pipe4
-            // 
-            this.pipe4.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.pipe4.Location = new System.Drawing.Point(998, -2);
-            this.pipe4.Name = "pipe4";
-            this.pipe4.Size = new System.Drawing.Size(100, 195);
-            this.pipe4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pipe4.TabIndex = 6;
-            this.pipe4.TabStop = false;
-            // 
-            // pipe5
-            // 
-            this.pipe5.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.pipe5.Location = new System.Drawing.Point(998, 604);
-            this.pipe5.Name = "pipe5";
-            this.pipe5.Size = new System.Drawing.Size(100, 685);
-            this.pipe5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pipe5.TabIndex = 7;
-            this.pipe5.TabStop = false;
-            // 
             // GOText
             // 
             this.GOText.AutoSize = true;
+            this.GOText.BackColor = System.Drawing.Color.Transparent;
             this.GOText.Font = new System.Drawing.Font("Mongolian Baiti", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GOText.Location = new System.Drawing.Point(765, 230);
             this.GOText.Name = "GOText";
@@ -228,9 +178,45 @@ namespace FlappyForm
             this.GOText.TabIndex = 8;
             this.GOText.Text = "Game Over";
             // 
+            // pipe2
+            // 
+            this.pipe2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipe2.Image = ((System.Drawing.Image)(resources.GetObject("pipe2.Image")));
+            this.pipe2.Location = new System.Drawing.Point(1784, -2);
+            this.pipe2.Name = "pipe2";
+            this.pipe2.Size = new System.Drawing.Size(100, 195);
+            this.pipe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipe2.TabIndex = 2;
+            this.pipe2.TabStop = false;
+            this.pipe2.Click += new System.EventHandler(this.pipe2_Click);
+            // 
+            // pipe1
+            // 
+            this.pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipe1.Image = ((System.Drawing.Image)(resources.GetObject("pipe1.Image")));
+            this.pipe1.Location = new System.Drawing.Point(1784, 604);
+            this.pipe1.Name = "pipe1";
+            this.pipe1.Size = new System.Drawing.Size(100, 685);
+            this.pipe1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipe1.TabIndex = 1;
+            this.pipe1.TabStop = false;
+            // 
+            // FlappyBird
+            // 
+            this.FlappyBird.BackColor = System.Drawing.Color.Lime;
+            this.FlappyBird.Image = global::FlappyForm.Properties.Resources.png_transparent_flappy_bird_bird_flight_bird_frame_animals_smiley;
+            this.FlappyBird.Location = new System.Drawing.Point(131, 265);
+            this.FlappyBird.Name = "FlappyBird";
+            this.FlappyBird.Size = new System.Drawing.Size(100, 50);
+            this.FlappyBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.FlappyBird.TabIndex = 0;
+            this.FlappyBird.TabStop = false;
+            this.FlappyBird.Click += new System.EventHandler(this.FlappyBird_Click);
+            // 
             // PipeBottom1
             // 
             this.PipeBottom1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.PipeBottom1.Image = ((System.Drawing.Image)(resources.GetObject("PipeBottom1.Image")));
             this.PipeBottom1.Location = new System.Drawing.Point(341, 604);
             this.PipeBottom1.Name = "PipeBottom1";
             this.PipeBottom1.Size = new System.Drawing.Size(100, 685);
@@ -238,21 +224,48 @@ namespace FlappyForm
             this.PipeBottom1.TabIndex = 10;
             this.PipeBottom1.TabStop = false;
             // 
+            // pipe5
+            // 
+            this.pipe5.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipe5.Image = ((System.Drawing.Image)(resources.GetObject("pipe5.Image")));
+            this.pipe5.Location = new System.Drawing.Point(998, 604);
+            this.pipe5.Name = "pipe5";
+            this.pipe5.Size = new System.Drawing.Size(100, 685);
+            this.pipe5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipe5.TabIndex = 7;
+            this.pipe5.TabStop = false;
+            // 
+            // pipe4
+            // 
+            this.pipe4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipe4.Image = ((System.Drawing.Image)(resources.GetObject("pipe4.Image")));
+            this.pipe4.Location = new System.Drawing.Point(998, -2);
+            this.pipe4.Name = "pipe4";
+            this.pipe4.Size = new System.Drawing.Size(100, 195);
+            this.pipe4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pipe4.TabIndex = 6;
+            this.pipe4.TabStop = false;
+            this.pipe4.Click += new System.EventHandler(this.pipe4_Click);
+            // 
             // pipeTop1
             // 
             this.pipeTop1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pipeTop1.Image = ((System.Drawing.Image)(resources.GetObject("pipeTop1.Image")));
             this.pipeTop1.Location = new System.Drawing.Point(341, -2);
             this.pipeTop1.Name = "pipeTop1";
             this.pipeTop1.Size = new System.Drawing.Size(100, 195);
             this.pipeTop1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pipeTop1.TabIndex = 9;
             this.pipeTop1.TabStop = false;
+            this.pipeTop1.Click += new System.EventHandler(this.pipeTop1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BackgroundImage = global::FlappyForm.Properties.Resources.achtergrond;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1924, 1041);
             this.Controls.Add(this.pipe2);
             this.Controls.Add(this.pipe1);
@@ -267,15 +280,16 @@ namespace FlappyForm
             this.Controls.Add(this.Ground);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pipe1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pipe2)).EndInit();
             this.MenuPanel.ResumeLayout(false);
             this.MenuPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pipe4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pipe5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipeBottom1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipe4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

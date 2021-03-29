@@ -63,6 +63,56 @@ namespace FlappyForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap achtergrond {
+            get {
+                object obj = ResourceManager.GetObject("achtergrond", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edd1642b77bcabee7fa18846b2f8ff9d {
+            get {
+                object obj = ResourceManager.GetObject("edd1642b77bcabee7fa18846b2f8ff9d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flappy_bird_pipe_png_7 {
+            get {
+                object obj = ResourceManager.GetObject("flappy-bird-pipe-png-7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pipebottom {
+            get {
+                object obj = ResourceManager.GetObject("pipebottom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pipetop {
+            get {
+                object obj = ResourceManager.GetObject("pipetop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap png_transparent_flappy_bird_bird_flight_bird_frame_animals_smiley {
             get {
                 object obj = ResourceManager.GetObject("png-transparent-flappy-bird-bird-flight-bird-frame-animals-smiley", resourceCulture);

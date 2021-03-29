@@ -83,5 +83,20 @@
   <ItemGroup>
     <None Include="Resources\png-transparent-flappy-bird-bird-flight-bird-frame-animals-smiley.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flappy-bird-pipe-png-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pipetop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pipebottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\achtergrond.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edd1642b77bcabee7fa18846b2f8ff9d.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
