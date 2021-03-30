@@ -10,7 +10,7 @@ namespace FlappyForm
         private int score = 0; //default starting score
         private int tableOf = 5; //preset for the table of 5
         private int defaultLives = 3;
-        private int startingLives = 3; //should be self explenatory
+        private int startingLives = 3; //should be self explanatory
         private int totalScore = 0;
 
         public Form1()
@@ -33,6 +33,8 @@ namespace FlappyForm
             healthbar.Minimum = 0;
             healthbar.Value = healthbar.Maximum;
             StartupHeight();
+            pipeTop1.Visible = false;
+            PipeBottom1.Visible = false;
         }
 
         private Random h = new Random(); //random height
@@ -54,7 +56,7 @@ namespace FlappyForm
             movepipe(gameSpeed);
             gameOver();
             speedUp();
-            addPoints();
+           // addPoints();
         }
 
         private void movepipe(int speed)
@@ -64,18 +66,27 @@ namespace FlappyForm
             else
             {
                 pipe1.Left = 1800;
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
             }
             if (pipe5.Left >= 0) //bottom pipe
             { pipe5.Left += -speed; }
             else
             {
                 pipe5.Left = 1800;
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
             }
             if (PipeBottom1.Left >= 0) //bottom pipe
             { PipeBottom1.Left += -speed; }
             else
             {
                 PipeBottom1.Left = 1800;
+                if (PipeBottom1.Visible != false)
+                {
+                    score = score + 1;
+                }
+                currentScore.Text = "Score:" + score.ToString();
             }
 
             if (pipe2.Left >= 0)  //top pipe
@@ -85,7 +96,9 @@ namespace FlappyForm
                 pipe2.Left = 1800;
                 pipe2.Height = h.Next(100, 300);//random value between the entered numbers
                 pipe1.Top = pipe2.Bottom + betweenRandom.Next(150, 250);
-              //  pipe2.Left = 1800 + offRandom.Next(0, 150);
+                //  pipe2.Left = 1800 + offRandom.Next(0, 150);
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
             }
 
             if (pipe4.Left >= 0)  //top pipe
@@ -95,7 +108,9 @@ namespace FlappyForm
                 pipe4.Left = 1800;
                 pipe4.Height = h.Next(100, 300);//random value between the entered numbers
                 pipe5.Top = pipe4.Bottom + betweenRandom.Next(150, 250);
-              //  pipe4.Left = 1800 + offRandom.Next(0, 150);
+                //  pipe4.Left = 1800 + offRandom.Next(0, 150);
+                score = score + 1;
+                currentScore.Text = "Score:" + score.ToString();
             }
             if (pipeTop1.Left >= 0)  //top pipe
             { pipeTop1.Left += -speed; }
@@ -104,7 +119,12 @@ namespace FlappyForm
                 pipeTop1.Left = 1800;
                 pipeTop1.Height = h.Next(100, 300);//random value between the entered numbers
                 PipeBottom1.Top = pipeTop1.Bottom + betweenRandom.Next(150, 250);
-                
+                if (pipeTop1.Visible != false)
+                {
+                  score = score + 1;
+                }
+              
+                currentScore.Text = "Score:" + score.ToString();
                 //  pipeTop1.Left = 1800 + offRandom.Next(0, 150);
             }
         }
@@ -119,43 +139,58 @@ namespace FlappyForm
             }
         }
 
+        #region addpoints [decapretated]
         private void addPoints()
         {
-            if (pipe1.Left == 0)
+            if (pipe1.Left <= 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe2.Left == 0)
+            if (pipe2.Left <= 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe5.Left == 0)
+            if (pipe5.Left <= 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipe4.Left == 0)
+            if (pipe4.Left <= 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (pipeTop1.Left == 0)
+            if (pipeTop1.Left <= 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
-            if (PipeBottom1.Left == 0)
+            if (PipeBottom1.Left <= 0)
             {
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
         }
-
+#endregion
         private void gameOver()
         {
-            if (/*(FlappyBird.Bounds.IntersectsWith(pipe1.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe2.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe5.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe4.Bounds)) || */ FlappyBird.Top == 660 || FlappyBird.Top == 0)
+            var intersectsWithTop = FlappyBird.Bounds.IntersectsWith(pipeTop1.Bounds);
+            var intersectsWithBottom = FlappyBird.Bounds.IntersectsWith(PipeBottom1.Bounds);
+            if (score < 2)
+            {
+                intersectsWithTop = pipe1.Bounds.IntersectsWith(pipeTop1.Bounds);
+                intersectsWithBottom = pipe1.Bounds.IntersectsWith(PipeBottom1.Bounds);
+                pipeTop1.Visible = false;
+                PipeBottom1.Visible = false;
+            }
+            else
+            {
+                pipeTop1.Visible = true;
+                PipeBottom1.Visible = true;
+            }
+            if (/*(FlappyBird.Bounds.IntersectsWith(pipe1.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe2.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe5.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe4.Bounds)) || */ FlappyBird.Top == 660 || FlappyBird.Top == 0 || intersectsWithBottom || intersectsWithTop)
             {
                 MenuPanel.Visible = true;
                 timer1.Enabled = false;
@@ -184,15 +219,16 @@ namespace FlappyForm
             pipe2.Location = new System.Drawing.Point(1784, -2);
             pipe4.Location = new System.Drawing.Point(998, -2);
             pipe5.Location = new System.Drawing.Point(998, 604);
-           // pipeTop1.Location = new System.Drawing.Point(,);
-           // PipeBottom1.Location = new System.Drawing.Point(,);
-            pipe1.Height = 451;
-            pipe2.Height = 195;
-            pipe4.Height = 195;
-            pipe5.Height = 451;
-            pipeTop1.Height = 195;
-            PipeBottom1.Height = 451;
-
+             pipeTop1.Location = new System.Drawing.Point(341, -2);
+            PipeBottom1.Location = new System.Drawing.Point(341, 604);
+            // pipe1.Height = 451;
+            // pipe2.Height = 195;
+            // pipe4.Height = 195;
+            //  pipe5.Height = 451;
+            //  pipeTop1.Height = 195;
+            // PipeBottom1.Height = 451;
+            pipeTop1.Visible = false;
+            PipeBottom1.Visible = false;
             #endregion Default Form
         }
 
@@ -201,7 +237,7 @@ namespace FlappyForm
             if (startingLives == 0)
             {
                 startingLives = defaultLives;
-                totalScore = 0;w
+                totalScore = 0;
             }
         }
 
@@ -242,6 +278,11 @@ namespace FlappyForm
                 FlappyBird.Top += 5;
         }
 
+        #region oopsies void
+
+        
+
+        
         private void FlappyBird_Click(object sender, EventArgs e)
         {
         }
@@ -272,5 +313,6 @@ namespace FlappyForm
         {
 
         }
+        #endregion
     }
 }
