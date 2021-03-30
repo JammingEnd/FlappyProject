@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace FlappyForm
 {
@@ -253,6 +254,7 @@ namespace FlappyForm
             if (flappyJumpSpeed == 0)
             {
                 flappyJumpSpeed = 80;
+
             }
 
             StartButton.Enabled = false;
@@ -315,4 +317,5 @@ namespace FlappyForm
         }
         #endregion
     }
+    
 }
