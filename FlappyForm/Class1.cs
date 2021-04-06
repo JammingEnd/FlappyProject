@@ -44,7 +44,7 @@ namespace CreateTable
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string sql = "SELECT * FROM highscores ORDER BY score ASC";
+            string sql = "SELECT * FROM highscores ORDER BY score DESC LIMI! 10";
             using var cmd = new MySqlCommand(sql, con);
 
             using MySqlDataReader rdr = cmd.ExecuteReader();

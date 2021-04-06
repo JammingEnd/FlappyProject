@@ -53,16 +53,18 @@ namespace FlappyForm
 
             if (HSscore == 0 || HSname == null)
             {
-                Console.WriteLine("error occured");
+                Console.WriteLine("error occured, NULL values detected");
                 return;
                 
             }
             Console.WriteLine(HSscore.ToString(), HSname, HSdate.ToString());
+
+            HStextLabel.Text = HSname + "  " + HSscore.ToString() + " " + HSdate.ToString();
         }
 
         private Random h = new Random(); //random height
         private Random betweenRandom = new Random(); //random space between the pipes
-                                                     //  private Random offRandom = new Random(); //pipe offset
+        //  private Random offRandom = new Random(); //pipe offset
 
         private void StartupHeight()
         {

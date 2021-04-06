@@ -51,9 +51,10 @@ namespace FlappyForm
             this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipeTop1 = new System.Windows.Forms.PictureBox();
             this.HighscorePanel = new System.Windows.Forms.Panel();
-            this.HSBackbutton = new System.Windows.Forms.Button();
-            this.sqlSendButton = new System.Windows.Forms.Button();
             this.HSNameBox = new System.Windows.Forms.TextBox();
+            this.sqlSendButton = new System.Windows.Forms.Button();
+            this.HSBackbutton = new System.Windows.Forms.Button();
+            this.HStextLabel = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
@@ -268,6 +269,7 @@ namespace FlappyForm
             // HighscorePanel
             // 
             this.HighscorePanel.BackColor = System.Drawing.Color.NavajoWhite;
+            this.HighscorePanel.Controls.Add(this.HStextLabel);
             this.HighscorePanel.Controls.Add(this.HSNameBox);
             this.HighscorePanel.Controls.Add(this.sqlSendButton);
             this.HighscorePanel.Controls.Add(this.HSBackbutton);
@@ -276,15 +278,12 @@ namespace FlappyForm
             this.HighscorePanel.Size = new System.Drawing.Size(286, 315);
             this.HighscorePanel.TabIndex = 11;
             // 
-            // HSBackbutton
+            // HSNameBox
             // 
-            this.HSBackbutton.Location = new System.Drawing.Point(13, 263);
-            this.HSBackbutton.Name = "HSBackbutton";
-            this.HSBackbutton.Size = new System.Drawing.Size(92, 38);
-            this.HSBackbutton.TabIndex = 0;
-            this.HSBackbutton.Text = "Back";
-            this.HSBackbutton.UseVisualStyleBackColor = true;
-            this.HSBackbutton.Click += new System.EventHandler(this.HSBackbutton_Click);
+            this.HSNameBox.Location = new System.Drawing.Point(41, 235);
+            this.HSNameBox.Name = "HSNameBox";
+            this.HSNameBox.Size = new System.Drawing.Size(219, 22);
+            this.HSNameBox.TabIndex = 2;
             // 
             // sqlSendButton
             // 
@@ -296,12 +295,25 @@ namespace FlappyForm
             this.sqlSendButton.UseVisualStyleBackColor = true;
             this.sqlSendButton.Click += new System.EventHandler(this.sqlSendButton_Click);
             // 
-            // HSNameBox
+            // HSBackbutton
             // 
-            this.HSNameBox.Location = new System.Drawing.Point(41, 235);
-            this.HSNameBox.Name = "HSNameBox";
-            this.HSNameBox.Size = new System.Drawing.Size(219, 22);
-            this.HSNameBox.TabIndex = 2;
+            this.HSBackbutton.Location = new System.Drawing.Point(13, 263);
+            this.HSBackbutton.Name = "HSBackbutton";
+            this.HSBackbutton.Size = new System.Drawing.Size(92, 38);
+            this.HSBackbutton.TabIndex = 0;
+            this.HSBackbutton.Text = "Back";
+            this.HSBackbutton.UseVisualStyleBackColor = true;
+            this.HSBackbutton.Click += new System.EventHandler(this.HSBackbutton_Click);
+            // 
+            // HStextLabel
+            // 
+            this.HStextLabel.AutoSize = true;
+            this.HStextLabel.BackColor = System.Drawing.Color.SeaShell;
+            this.HStextLabel.Location = new System.Drawing.Point(38, 27);
+            this.HStextLabel.Name = "HStextLabel";
+            this.HStextLabel.Size = new System.Drawing.Size(46, 17);
+            this.HStextLabel.TabIndex = 3;
+            this.HStextLabel.Text = "label1";
             // 
             // Form1
             // 
@@ -368,6 +380,7 @@ namespace FlappyForm
         private System.Windows.Forms.Button HSBackbutton;
         private System.Windows.Forms.Button sqlSendButton;
         private System.Windows.Forms.TextBox HSNameBox;
+        private System.Windows.Forms.Label HStextLabel;
     }
 }
 
