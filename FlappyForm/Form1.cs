@@ -42,9 +42,9 @@ namespace FlappyForm
 
         void SQLReader()
         {
-            CreateTable.Program program = new CreateTable.Program();
+           //CreateTable.Program program = new CreateTable.Program();
 
-            program.MReaderMain();
+          // program.MReaderMain();
 
             if (HStext == null)
             {
@@ -53,10 +53,12 @@ namespace FlappyForm
                 
             }
             
-            HStext = program.HStext;
+         //  HStext = program.HStext;
+         string[] row = {HStext};
+         var listviewItem = new ListViewItem(row);
+         listView1.Items.Add(listviewItem);
 
-            
-            Console.WriteLine(HStext);
+         Console.WriteLine(HStext);
         }
 
         private Random h = new Random(); //random height

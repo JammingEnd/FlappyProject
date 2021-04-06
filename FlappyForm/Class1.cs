@@ -58,6 +58,7 @@ namespace CreateTable
                 rdr.GetDateTime(3));
                // HStext = text.ToString();
                 formlink.HStext = text.ToString();
+
             }
             
         }
