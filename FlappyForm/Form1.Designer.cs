@@ -52,6 +52,7 @@ namespace FlappyForm
             this.pipeTop1 = new System.Windows.Forms.PictureBox();
             this.HighscorePanel = new System.Windows.Forms.Panel();
             this.HSBackbutton = new System.Windows.Forms.Button();
+            this.sqlSendButton = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
@@ -266,6 +267,7 @@ namespace FlappyForm
             // HighscorePanel
             // 
             this.HighscorePanel.BackColor = System.Drawing.Color.NavajoWhite;
+            this.HighscorePanel.Controls.Add(this.sqlSendButton);
             this.HighscorePanel.Controls.Add(this.HSBackbutton);
             this.HighscorePanel.Location = new System.Drawing.Point(300, 283);
             this.HighscorePanel.Name = "HighscorePanel";
@@ -281,6 +283,16 @@ namespace FlappyForm
             this.HSBackbutton.Text = "Back";
             this.HSBackbutton.UseVisualStyleBackColor = true;
             this.HSBackbutton.Click += new System.EventHandler(this.HSBackbutton_Click);
+            // 
+            // sqlSendButton
+            // 
+            this.sqlSendButton.Location = new System.Drawing.Point(189, 228);
+            this.sqlSendButton.Name = "sqlSendButton";
+            this.sqlSendButton.Size = new System.Drawing.Size(94, 34);
+            this.sqlSendButton.TabIndex = 1;
+            this.sqlSendButton.Text = "Send";
+            this.sqlSendButton.UseVisualStyleBackColor = true;
+            this.sqlSendButton.Click += new System.EventHandler(this.sqlSendButton_Click);
             // 
             // Form1
             // 
@@ -344,6 +356,7 @@ namespace FlappyForm
         private System.Windows.Forms.PictureBox pipeTop1;
         private System.Windows.Forms.Panel HighscorePanel;
         private System.Windows.Forms.Button HSBackbutton;
+        private System.Windows.Forms.Button sqlSendButton;
     }
 }
 

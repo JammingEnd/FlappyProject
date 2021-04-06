@@ -7,16 +7,26 @@ using MySql.Data.MySqlClient;
 
 namespace CreateTable
 {
-    class Program
+    public class Program
     {
         public int score = FlappyForm.Form1.scoreSend;
         private static int scoreSQL;
-
-        void Awake()
+        public string name;
+        private static string nameSend;
+        public Program()
         {
             scoreSQL = score;
+            nameSend = name;
         }
-        static void Main(string[] args)
+      
+
+      
+        public void Activatesql()
+        {
+
+            SQLConnect();
+        }
+        public void SQLConnect()
         {
             string nameMan = "broederjan";
 
@@ -29,7 +39,7 @@ namespace CreateTable
             var sql = "INSERT INTO highscores(name, score) VALUES(@name, @score)";
             using var cmd = new MySqlCommand(sql, con);
 
-            cmd.Parameters.AddWithValue("@name", nameMan);
+            cmd.Parameters.AddWithValue("@name", nameSend);
             cmd.Parameters.AddWithValue("@score", scoreSQL);
             cmd.Prepare();
 

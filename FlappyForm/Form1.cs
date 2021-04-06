@@ -63,6 +63,7 @@ namespace FlappyForm
             gameOver();
             speedUp();
             // addPoints();
+            
         }
 
         private void movepipe(int speed)
@@ -215,6 +216,7 @@ namespace FlappyForm
                 totalScore = totalScore + score;
                 menuScore.Text = "Total score:" + totalScore.ToString();
                 scoreLink = totalScore;
+                HSButton.Enabled = true;
                 if (scoreLink != 0)
                 {
                     scoreSend = scoreLink;
@@ -273,6 +275,8 @@ namespace FlappyForm
             MenuPanel.Visible = false;
             GOText.Visible = false;
             currentScore.Visible = true;
+            HighscorePanel.Visible = false;
+            HSButton.Enabled = false;
             score = 0;
             LifeReset();
         }
@@ -284,6 +288,7 @@ namespace FlappyForm
                 FlappyBird.Top += -flappyJumpSpeed;
                 Console.WriteLine("space pressed");
             }
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -334,6 +339,14 @@ namespace FlappyForm
         {
             HighscorePanel.Visible = false;
             MenuPanel.Visible = true;
+        }
+
+        private void sqlSendButton_Click(object sender, EventArgs e)
+        {
+            CreateTable.Program program = new CreateTable.Program();
+
+            program.SQLConnect();
+
         }
     }
 }
