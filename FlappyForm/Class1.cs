@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlappyForm;
 using MySql.Data.MySqlClient;
 
 namespace CreateTable
@@ -16,7 +17,7 @@ namespace CreateTable
 
 
 
-            string cs = @"server=%;userid=Jammie;password=5687;database=scores";
+            string cs = @"server=localhost;userid=root;password=;database=scores";
 
             using var con = new MySqlConnection(cs);
             con.Open();
@@ -33,30 +34,32 @@ namespace CreateTable
             Console.WriteLine("row inserted");
         }
 
-        public string name = null;
-        public int score = 0;
-        public DateTime date;
+        public string HStext;
+       
 
         public void MReaderMain()
         {
-            string cs = @"server=%;userid=Jammie;password=5687;database=scores";
+            FlappyForm.Form1 formlink = new Form1();
+            string cs = @"server=localhost;userid=root;password=;database=scores";
 
             using var con = new MySqlConnection(cs);
             con.Open();
 
-            string sql = "SELECT * FROM highscores ORDER BY score DESC LIMI! 10";
+            string sql = "SELECT * FROM highscores ORDER BY score DESC LIMIT 10";
             using var cmd = new MySqlCommand(sql, con);
 
             using MySqlDataReader rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
             {
-                Console.WriteLine("{0} {1} {2}", rdr.GetString(0), rdr.GetInt32(1),
-                    rdr.GetDateTime(2));
-                name = rdr.GetString(0);
-                score = rdr.GetInt32(1);
-                date = rdr.GetDateTime(2);
+                Console.WriteLine("{0} {1} {2}", rdr.GetString(1), rdr.GetInt32(2),
+                    rdr.GetDateTime(3));
+                var text = ("{0} {1} {2}", rdr.GetString(1), rdr.GetInt32(2),
+                rdr.GetDateTime(3));
+               // HStext = text.ToString();
+                formlink.HStext = text.ToString();
             }
+            
         }
     }
 }

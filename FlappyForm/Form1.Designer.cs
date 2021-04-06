@@ -54,7 +54,8 @@ namespace FlappyForm
             this.HSNameBox = new System.Windows.Forms.TextBox();
             this.sqlSendButton = new System.Windows.Forms.Button();
             this.HSBackbutton = new System.Windows.Forms.Button();
-            this.HStextLabel = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.LVstats = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
@@ -269,7 +270,7 @@ namespace FlappyForm
             // HighscorePanel
             // 
             this.HighscorePanel.BackColor = System.Drawing.Color.NavajoWhite;
-            this.HighscorePanel.Controls.Add(this.HStextLabel);
+            this.HighscorePanel.Controls.Add(this.listView1);
             this.HighscorePanel.Controls.Add(this.HSNameBox);
             this.HighscorePanel.Controls.Add(this.sqlSendButton);
             this.HighscorePanel.Controls.Add(this.HSBackbutton);
@@ -305,15 +306,17 @@ namespace FlappyForm
             this.HSBackbutton.UseVisualStyleBackColor = true;
             this.HSBackbutton.Click += new System.EventHandler(this.HSBackbutton_Click);
             // 
-            // HStextLabel
+            // listView1
             // 
-            this.HStextLabel.AutoSize = true;
-            this.HStextLabel.BackColor = System.Drawing.Color.SeaShell;
-            this.HStextLabel.Location = new System.Drawing.Point(38, 27);
-            this.HStextLabel.Name = "HStextLabel";
-            this.HStextLabel.Size = new System.Drawing.Size(46, 17);
-            this.HStextLabel.TabIndex = 3;
-            this.HStextLabel.Text = "label1";
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.LVstats});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(29, 22);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(239, 195);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             // 
             // Form1
             // 
@@ -380,7 +383,8 @@ namespace FlappyForm
         private System.Windows.Forms.Button HSBackbutton;
         private System.Windows.Forms.Button sqlSendButton;
         private System.Windows.Forms.TextBox HSNameBox;
-        private System.Windows.Forms.Label HStextLabel;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader LVstats;
     }
 }
 

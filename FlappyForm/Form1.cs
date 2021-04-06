@@ -12,9 +12,7 @@ namespace FlappyForm
         private int defaultLives = 3;
         private int startingLives = 3; //should be self explanatory
         private int totalScore = 0;
-        private int HSscore;
-        private string HSname;
-        private DateTime HSdate;
+        public string HStext;
         
 
         public Form1()
@@ -47,19 +45,18 @@ namespace FlappyForm
             CreateTable.Program program = new CreateTable.Program();
 
             program.MReaderMain();
-            HSscore = program.score;
-            HSname = program.name;
-            HSdate = program.date;
 
-            if (HSscore == 0 || HSname == null)
+            if (HStext == null)
             {
                 Console.WriteLine("error occured, NULL values detected");
                 return;
                 
             }
-            Console.WriteLine(HSscore.ToString(), HSname, HSdate.ToString());
+            
+            HStext = program.HStext;
 
-            HStextLabel.Text = HSname + "  " + HSscore.ToString() + " " + HSdate.ToString();
+            
+            Console.WriteLine(HStext);
         }
 
         private Random h = new Random(); //random height
