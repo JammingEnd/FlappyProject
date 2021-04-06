@@ -50,6 +50,8 @@ namespace FlappyForm
             this.pipe5 = new System.Windows.Forms.PictureBox();
             this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipeTop1 = new System.Windows.Forms.PictureBox();
+            this.HighscorePanel = new System.Windows.Forms.Panel();
+            this.HSBackbutton = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
@@ -58,6 +60,7 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.pipe5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).BeginInit();
+            this.HighscorePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // currentScore
@@ -134,6 +137,7 @@ namespace FlappyForm
             this.HSButton.TabIndex = 1;
             this.HSButton.Text = "Highscores";
             this.HSButton.UseVisualStyleBackColor = false;
+            this.HSButton.Click += new System.EventHandler(this.HSButton_Click);
             // 
             // StartButton
             // 
@@ -259,6 +263,25 @@ namespace FlappyForm
             this.pipeTop1.TabStop = false;
             this.pipeTop1.Click += new System.EventHandler(this.pipeTop1_Click);
             // 
+            // HighscorePanel
+            // 
+            this.HighscorePanel.BackColor = System.Drawing.Color.NavajoWhite;
+            this.HighscorePanel.Controls.Add(this.HSBackbutton);
+            this.HighscorePanel.Location = new System.Drawing.Point(300, 283);
+            this.HighscorePanel.Name = "HighscorePanel";
+            this.HighscorePanel.Size = new System.Drawing.Size(286, 315);
+            this.HighscorePanel.TabIndex = 11;
+            // 
+            // HSBackbutton
+            // 
+            this.HSBackbutton.Location = new System.Drawing.Point(13, 263);
+            this.HSBackbutton.Name = "HSBackbutton";
+            this.HSBackbutton.Size = new System.Drawing.Size(92, 38);
+            this.HSBackbutton.TabIndex = 0;
+            this.HSBackbutton.Text = "Back";
+            this.HSBackbutton.UseVisualStyleBackColor = true;
+            this.HSBackbutton.Click += new System.EventHandler(this.HSBackbutton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -267,6 +290,7 @@ namespace FlappyForm
             this.BackgroundImage = global::FlappyForm.Properties.Resources.achtergrond;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1924, 1041);
+            this.Controls.Add(this.HighscorePanel);
             this.Controls.Add(this.pipe2);
             this.Controls.Add(this.pipe1);
             this.Controls.Add(this.GOText);
@@ -291,6 +315,7 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.pipe5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).EndInit();
+            this.HighscorePanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,6 +342,8 @@ namespace FlappyForm
         private System.Windows.Forms.Label lifeLabel;
         private System.Windows.Forms.PictureBox PipeBottom1;
         private System.Windows.Forms.PictureBox pipeTop1;
+        private System.Windows.Forms.Panel HighscorePanel;
+        private System.Windows.Forms.Button HSBackbutton;
     }
 }
 

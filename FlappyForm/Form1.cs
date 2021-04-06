@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace FlappyForm
 {
@@ -13,6 +12,11 @@ namespace FlappyForm
         private int defaultLives = 3;
         private int startingLives = 3; //should be self explanatory
         private int totalScore = 0;
+
+        public static int scoreSend;
+        public int scoreLink;
+        public static string nameSend;
+        public string nameLink;
 
         public Form1()
         {
@@ -36,11 +40,12 @@ namespace FlappyForm
             StartupHeight();
             pipeTop1.Visible = false;
             PipeBottom1.Visible = false;
+            HighscorePanel.Visible = false;
         }
 
         private Random h = new Random(); //random height
         private Random betweenRandom = new Random(); //random space between the pipes
-      //  private Random offRandom = new Random(); //pipe offset
+                                                     //  private Random offRandom = new Random(); //pipe offset
 
         private void StartupHeight()
         {
@@ -57,7 +62,7 @@ namespace FlappyForm
             movepipe(gameSpeed);
             gameOver();
             speedUp();
-           // addPoints();
+            // addPoints();
         }
 
         private void movepipe(int speed)
@@ -122,9 +127,9 @@ namespace FlappyForm
                 PipeBottom1.Top = pipeTop1.Bottom + betweenRandom.Next(150, 250);
                 if (pipeTop1.Visible != false)
                 {
-                  score = score + 1;
+                    score = score + 1;
                 }
-              
+
                 currentScore.Text = "Score:" + score.ToString();
                 //  pipeTop1.Left = 1800 + offRandom.Next(0, 150);
             }
@@ -141,6 +146,7 @@ namespace FlappyForm
         }
 
         #region addpoints [decapretated]
+
         private void addPoints()
         {
             if (pipe1.Left <= 0)
@@ -174,7 +180,9 @@ namespace FlappyForm
                 currentScore.Text = "Score:" + score.ToString();
             }
         }
-#endregion
+
+        #endregion addpoints [decapretated]
+
         private void gameOver()
         {
             var intersectsWithTop = FlappyBird.Bounds.IntersectsWith(pipeTop1.Bounds);
@@ -206,7 +214,11 @@ namespace FlappyForm
                 StartButton.Enabled = true;
                 totalScore = totalScore + score;
                 menuScore.Text = "Total score:" + totalScore.ToString();
-
+                scoreLink = totalScore;
+                if (scoreLink != 0)
+                {
+                    scoreSend = scoreLink;
+                }
                 Reset();
             }
         }
@@ -220,7 +232,7 @@ namespace FlappyForm
             pipe2.Location = new System.Drawing.Point(1784, -2);
             pipe4.Location = new System.Drawing.Point(998, -2);
             pipe5.Location = new System.Drawing.Point(998, 604);
-             pipeTop1.Location = new System.Drawing.Point(341, -2);
+            pipeTop1.Location = new System.Drawing.Point(341, -2);
             PipeBottom1.Location = new System.Drawing.Point(341, 604);
             // pipe1.Height = 451;
             // pipe2.Height = 195;
@@ -230,6 +242,7 @@ namespace FlappyForm
             // PipeBottom1.Height = 451;
             pipeTop1.Visible = false;
             PipeBottom1.Visible = false;
+
             #endregion Default Form
         }
 
@@ -254,7 +267,6 @@ namespace FlappyForm
             if (flappyJumpSpeed == 0)
             {
                 flappyJumpSpeed = 80;
-
             }
 
             StartButton.Enabled = false;
@@ -282,9 +294,6 @@ namespace FlappyForm
 
         #region oopsies void
 
-        
-
-        
         private void FlappyBird_Click(object sender, EventArgs e)
         {
         }
@@ -303,19 +312,28 @@ namespace FlappyForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void pipe4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void pipeTop1_Click(object sender, EventArgs e)
         {
-
         }
-        #endregion
+
+        #endregion oopsies void
+
+        private void HSButton_Click(object sender, EventArgs e)
+        {
+            HighscorePanel.Visible = true;
+            MenuPanel.Visible = false;
+        }
+
+        private void HSBackbutton_Click(object sender, EventArgs e)
+        {
+            HighscorePanel.Visible = false;
+            MenuPanel.Visible = true;
+        }
     }
-    
 }

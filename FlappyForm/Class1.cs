@@ -9,11 +9,16 @@ namespace CreateTable
 {
     class Program
     {
-        
+        public int score = FlappyForm.Form1.scoreSend;
+        private static int scoreSQL;
+
+        void Awake()
+        {
+            scoreSQL = score;
+        }
         static void Main(string[] args)
         {
             string nameMan = "broederjan";
-            int goodSkill = 400;
 
 
             string cs = @"server=%;userid=Jammie;password=5687;database=scores";
@@ -25,7 +30,7 @@ namespace CreateTable
             using var cmd = new MySqlCommand(sql, con);
 
             cmd.Parameters.AddWithValue("@name", nameMan);
-            cmd.Parameters.AddWithValue("@score", goodSkill);
+            cmd.Parameters.AddWithValue("@score", scoreSQL);
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();
