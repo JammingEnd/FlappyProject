@@ -12,18 +12,17 @@ namespace FlappyForm
         private int defaultLives = 3;
         private int startingLives = 3; //should be self explanatory
         private int totalScore = 0;
-
-        public static int scoreSend;
-        public int scoreLink;
-        public static string nameSend;
-        public string nameLink;
+        private int HSscore;
+        private string HSname;
+        private DateTime HSdate;
+        
 
         public Form1()
         {
             InitializeComponent();
-
+          
             WindowState = FormWindowState.Maximized;
-
+            SQLReader();
             FlappyBird.BringToFront();
             MenuPanel.Visible = true;
             timer1.Enabled = false;
@@ -41,6 +40,24 @@ namespace FlappyForm
             pipeTop1.Visible = false;
             PipeBottom1.Visible = false;
             HighscorePanel.Visible = false;
+        }
+
+        void SQLReader()
+        {
+            CreateTable.Program program = new CreateTable.Program();
+
+            program.MReaderMain();
+            HSscore = program.score;
+            HSname = program.name;
+            HSdate = program.date;
+
+            if (HSscore == 0 || HSname == null)
+            {
+                Console.WriteLine("error occured");
+                return;
+                
+            }
+            Console.WriteLine(HSscore.ToString(), HSname, HSdate.ToString());
         }
 
         private Random h = new Random(); //random height
@@ -215,12 +232,8 @@ namespace FlappyForm
                 StartButton.Enabled = true;
                 totalScore = totalScore + score;
                 menuScore.Text = "Total score:" + totalScore.ToString();
-                scoreLink = totalScore;
                 HSButton.Enabled = true;
-                if (scoreLink != 0)
-                {
-                    scoreSend = scoreLink;
-                }
+
                 Reset();
             }
         }
@@ -344,8 +357,9 @@ namespace FlappyForm
         private void sqlSendButton_Click(object sender, EventArgs e)
         {
             CreateTable.Program program = new CreateTable.Program();
+            string nameSend = HSNameBox.Text.ToString();
 
-            program.SQLConnect();
+            program.SQLConnect(nameSend, totalScore);
 
         }
     }

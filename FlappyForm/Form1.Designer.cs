@@ -53,6 +53,7 @@ namespace FlappyForm
             this.HighscorePanel = new System.Windows.Forms.Panel();
             this.HSBackbutton = new System.Windows.Forms.Button();
             this.sqlSendButton = new System.Windows.Forms.Button();
+            this.HSNameBox = new System.Windows.Forms.TextBox();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
@@ -267,6 +268,7 @@ namespace FlappyForm
             // HighscorePanel
             // 
             this.HighscorePanel.BackColor = System.Drawing.Color.NavajoWhite;
+            this.HighscorePanel.Controls.Add(this.HSNameBox);
             this.HighscorePanel.Controls.Add(this.sqlSendButton);
             this.HighscorePanel.Controls.Add(this.HSBackbutton);
             this.HighscorePanel.Location = new System.Drawing.Point(300, 283);
@@ -286,13 +288,20 @@ namespace FlappyForm
             // 
             // sqlSendButton
             // 
-            this.sqlSendButton.Location = new System.Drawing.Point(189, 228);
+            this.sqlSendButton.Location = new System.Drawing.Point(189, 265);
             this.sqlSendButton.Name = "sqlSendButton";
             this.sqlSendButton.Size = new System.Drawing.Size(94, 34);
             this.sqlSendButton.TabIndex = 1;
             this.sqlSendButton.Text = "Send";
             this.sqlSendButton.UseVisualStyleBackColor = true;
             this.sqlSendButton.Click += new System.EventHandler(this.sqlSendButton_Click);
+            // 
+            // HSNameBox
+            // 
+            this.HSNameBox.Location = new System.Drawing.Point(41, 235);
+            this.HSNameBox.Name = "HSNameBox";
+            this.HSNameBox.Size = new System.Drawing.Size(219, 22);
+            this.HSNameBox.TabIndex = 2;
             // 
             // Form1
             // 
@@ -328,6 +337,7 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).EndInit();
             this.HighscorePanel.ResumeLayout(false);
+            this.HighscorePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,6 +367,7 @@ namespace FlappyForm
         private System.Windows.Forms.Panel HighscorePanel;
         private System.Windows.Forms.Button HSBackbutton;
         private System.Windows.Forms.Button sqlSendButton;
+        private System.Windows.Forms.TextBox HSNameBox;
     }
 }
 
