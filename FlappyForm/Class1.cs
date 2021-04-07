@@ -37,30 +37,38 @@ namespace CreateTable
         public string HStext;
        
 
-        public void MReaderMain()
+        public string MReaderMain()
         {
-            FlappyForm.Form1 formlink = new Form1();
+
+            string result = "";
             string cs = @"server=localhost;userid=root;password=;database=scores";
 
             using var con = new MySqlConnection(cs);
             con.Open();
 
             string sql = "SELECT * FROM highscores ORDER BY score DESC LIMIT 10";
-            using var cmd = new MySqlCommand(sql, con);
-
-            using MySqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            using (var cmd = new MySqlCommand(sql, con))
             {
-                Console.WriteLine("{0} {1} {2}", rdr.GetString(1), rdr.GetInt32(2),
-                    rdr.GetDateTime(3));
-                var text = ("{0} {1} {2}", rdr.GetString(1), rdr.GetInt32(2),
-                rdr.GetDateTime(3));
-               // HStext = text.ToString();
-                formlink.HStext = text.ToString();
+                using (MySqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        Console.WriteLine("{0} {1} {2}", rdr.GetString(1), rdr.GetInt32(2),
+                            rdr.GetDateTime(3));
+                        var text = ("{0} {1} {2}", rdr.GetString(1), rdr.GetInt32(2),
+                            rdr.GetDateTime(3));
+                        // HStext = text.ToString();
+                        result = text.ToString();
 
+                    }
+
+                }
             }
-            
+
+            return result;
+
+
+
         }
     }
 }

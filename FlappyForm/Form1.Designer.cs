@@ -51,11 +51,11 @@ namespace FlappyForm
             this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipeTop1 = new System.Windows.Forms.PictureBox();
             this.HighscorePanel = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.LVstats = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HSNameBox = new System.Windows.Forms.TextBox();
             this.sqlSendButton = new System.Windows.Forms.Button();
             this.HSBackbutton = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.LVstats = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
@@ -279,6 +279,18 @@ namespace FlappyForm
             this.HighscorePanel.Size = new System.Drawing.Size(286, 315);
             this.HighscorePanel.TabIndex = 11;
             // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.LVstats});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(29, 22);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(239, 195);
+            this.listView1.TabIndex = 3;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            // 
             // HSNameBox
             // 
             this.HSNameBox.Location = new System.Drawing.Point(41, 235);
@@ -305,18 +317,6 @@ namespace FlappyForm
             this.HSBackbutton.Text = "Back";
             this.HSBackbutton.UseVisualStyleBackColor = true;
             this.HSBackbutton.Click += new System.EventHandler(this.HSBackbutton_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.LVstats});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(29, 22);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(239, 195);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
             // 
             // Form1
             // 

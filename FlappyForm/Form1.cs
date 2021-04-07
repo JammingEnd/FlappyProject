@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace FlappyForm
 {
@@ -38,15 +39,16 @@ namespace FlappyForm
             pipeTop1.Visible = false;
             PipeBottom1.Visible = false;
             HighscorePanel.Visible = false;
+            HSNameBox.Text = null;
         }
 
         void SQLReader()
-        {
-           //CreateTable.Program program = new CreateTable.Program();
+        { 
+            CreateTable.Program program = new CreateTable.Program();
 
-          // program.MReaderMain();
+            string value =  program.MReaderMain();
 
-            if (HStext == null)
+            if (value == null)
             {
                 Console.WriteLine("error occured, NULL values detected");
                 return;
@@ -54,11 +56,11 @@ namespace FlappyForm
             }
             
          //  HStext = program.HStext;
-         string[] row = {HStext};
+         string[] row = {value};
          var listviewItem = new ListViewItem(row);
          listView1.Items.Add(listviewItem);
 
-         Console.WriteLine(HStext);
+         Console.WriteLine(value);
         }
 
         private Random h = new Random(); //random height
@@ -300,7 +302,6 @@ namespace FlappyForm
             if (e.KeyCode == Keys.Space)
             {
                 FlappyBird.Top += -flappyJumpSpeed;
-                Console.WriteLine("space pressed");
             }
 
         }
@@ -348,7 +349,9 @@ namespace FlappyForm
             HighscorePanel.Visible = true;
             MenuPanel.Visible = false;
         }
-
+        /// <summary>
+        /// highscore button for leaving the panel
+        /// </summary>
         private void HSBackbutton_Click(object sender, EventArgs e)
         {
             HighscorePanel.Visible = false;
@@ -358,9 +361,24 @@ namespace FlappyForm
         private void sqlSendButton_Click(object sender, EventArgs e)
         {
             CreateTable.Program program = new CreateTable.Program();
-            string nameSend = HSNameBox.Text.ToString();
+            string nameSend = HSNameBox.Text;
 
-            program.SQLConnect(nameSend, totalScore);
+            if (nameSend != "")
+            {
+                program.SQLConnect(nameSend, totalScore);
+
+                HSNameBox.Text = "Scores Send!!!";
+                Task.Delay(5000);
+                HSNameBox.Text = "";
+            }
+            else
+            {
+                HSNameBox.Text = "Insert a name!";
+                Task.Delay(3000); 
+                HSNameBox.Text = "";
+            }
+            
+
 
         }
     }
