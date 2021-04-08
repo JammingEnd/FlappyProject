@@ -59,7 +59,7 @@ namespace CreateTable
                 {
                     while (rdr.Read())
                     {
-                        var text = ("Name: " +rdr.GetString(1),"Score: " + rdr.GetInt32(2),
+                        var text = ("Name: " + rdr.GetString(1),"Score: " + rdr.GetInt32(2),
                            "Time: " + rdr.GetDateTime(3));
                         // HStext = text.ToString();
                         

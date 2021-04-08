@@ -202,7 +202,7 @@ namespace FlappyForm
             // 
             this.pipe2.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.pipe2.Image = ((System.Drawing.Image)(resources.GetObject("pipe2.Image")));
-            this.pipe2.Location = new System.Drawing.Point(1784, -2);
+            this.pipe2.Location = new System.Drawing.Point(1873, -2);
             this.pipe2.Name = "pipe2";
             this.pipe2.Size = new System.Drawing.Size(100, 195);
             this.pipe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -214,7 +214,7 @@ namespace FlappyForm
             // 
             this.pipe1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.pipe1.Image = ((System.Drawing.Image)(resources.GetObject("pipe1.Image")));
-            this.pipe1.Location = new System.Drawing.Point(1784, 604);
+            this.pipe1.Location = new System.Drawing.Point(1873, 604);
             this.pipe1.Name = "pipe1";
             this.pipe1.Size = new System.Drawing.Size(100, 685);
             this.pipe1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -237,18 +237,19 @@ namespace FlappyForm
             // 
             this.PipeBottom1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.PipeBottom1.Image = ((System.Drawing.Image)(resources.GetObject("PipeBottom1.Image")));
-            this.PipeBottom1.Location = new System.Drawing.Point(341, 604);
+            this.PipeBottom1.Location = new System.Drawing.Point(518, 604);
             this.PipeBottom1.Name = "PipeBottom1";
             this.PipeBottom1.Size = new System.Drawing.Size(100, 685);
             this.PipeBottom1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PipeBottom1.TabIndex = 10;
             this.PipeBottom1.TabStop = false;
+            this.PipeBottom1.Click += new System.EventHandler(this.PipeBottom1_Click);
             // 
             // pipe5
             // 
             this.pipe5.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.pipe5.Image = ((System.Drawing.Image)(resources.GetObject("pipe5.Image")));
-            this.pipe5.Location = new System.Drawing.Point(998, 604);
+            this.pipe5.Location = new System.Drawing.Point(1238, 604);
             this.pipe5.Name = "pipe5";
             this.pipe5.Size = new System.Drawing.Size(100, 685);
             this.pipe5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -259,7 +260,7 @@ namespace FlappyForm
             // 
             this.pipe4.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.pipe4.Image = ((System.Drawing.Image)(resources.GetObject("pipe4.Image")));
-            this.pipe4.Location = new System.Drawing.Point(998, -2);
+            this.pipe4.Location = new System.Drawing.Point(1238, -2);
             this.pipe4.Name = "pipe4";
             this.pipe4.Size = new System.Drawing.Size(100, 195);
             this.pipe4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -271,7 +272,7 @@ namespace FlappyForm
             // 
             this.pipeTop1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.pipeTop1.Image = ((System.Drawing.Image)(resources.GetObject("pipeTop1.Image")));
-            this.pipeTop1.Location = new System.Drawing.Point(341, -2);
+            this.pipeTop1.Location = new System.Drawing.Point(518, -2);
             this.pipeTop1.Name = "pipeTop1";
             this.pipeTop1.Size = new System.Drawing.Size(100, 195);
             this.pipeTop1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

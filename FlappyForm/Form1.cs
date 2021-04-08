@@ -104,7 +104,7 @@ namespace FlappyForm
             movepipe(gameSpeed);
             gameOver();
             speedUp();
-            // addPoints();
+            //addPoints();  //code redirected, its staying because i can show how i did it before
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace FlappyForm
             { pipe1.Left += -speed; }
             else
             {
-                pipe1.Left = 1800;
+                pipe1.Left = 1770;
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
@@ -125,7 +125,7 @@ namespace FlappyForm
             { pipe5.Left += -speed; }
             else
             {
-                pipe5.Left = 1800;
+                pipe5.Left = 1770;
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
@@ -133,7 +133,7 @@ namespace FlappyForm
             { PipeBottom1.Left += -speed; }
             else
             {
-                PipeBottom1.Left = 1800;
+                PipeBottom1.Left = 1770;
                 if (PipeBottom1.Visible != false)
                 {
                     score = score + 1;
@@ -186,6 +186,10 @@ namespace FlappyForm
         /// </summary>
         private void speedUp()
         {
+            if (score == 9 || score == 10)
+            {
+                tableOf = 15;
+            }
             if (score == tableOf)
             {
                 gameSpeed = gameSpeed + 1;
@@ -259,7 +263,7 @@ namespace FlappyForm
             //the above code handles the first 2 pipes in the game to be invisible.
 
             //when i contact with a pipe or too high or low, it resets most aspects of the game
-            if (/*(FlappyBird.Bounds.IntersectsWith(pipe1.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe2.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe5.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe4.Bounds)) || */ FlappyBird.Top == 660 || FlappyBird.Top == 0 || intersectsWithBottom || intersectsWithTop)
+            if ((FlappyBird.Bounds.IntersectsWith(pipe1.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe2.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe5.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe4.Bounds)) || FlappyBird.Top == 660 || FlappyBird.Top == 0 || intersectsWithBottom || intersectsWithTop)
             {
                 MenuPanel.Visible = true;
                 timer1.Enabled = false;
@@ -353,9 +357,13 @@ namespace FlappyForm
         /// </summary>
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space)
+            e.SuppressKeyPress = true;
+            if (HighscorePanel.Visible == false && MenuPanel.Visible == false)
             {
-                FlappyBird.Top += -flappyJumpSpeed;
+                if (e.KeyCode == Keys.Space)
+                {
+                    FlappyBird.Top += -flappyJumpSpeed;
+                }
             }
         }
 
@@ -412,6 +420,7 @@ namespace FlappyForm
 
             HSNameBox.Text = "";
             HSscoreViewer.Text = "Current Score: " + totalScore.ToString();
+            StartButton.Enabled = false;
         }
 
         /// <summary>
@@ -421,6 +430,7 @@ namespace FlappyForm
         {
             HighscorePanel.Visible = false;
             MenuPanel.Visible = true;
+            StartButton.Enabled = true;
         }
 
         /// <summary>
@@ -452,6 +462,11 @@ namespace FlappyForm
                     HSNameBox.Text = "";
                 }
             }
+        }
+
+        private void PipeBottom1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
