@@ -148,5 +148,14 @@
   <ItemGroup>
     <None Include="Resources\edd1642b77bcabee7fa18846b2f8ff9d.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bbutton.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -73,6 +73,16 @@ namespace FlappyForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bbutton {
+            get {
+                object obj = ResourceManager.GetObject("Bbutton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edd1642b77bcabee7fa18846b2f8ff9d {
             get {
                 object obj = ResourceManager.GetObject("edd1642b77bcabee7fa18846b2f8ff9d", resourceCulture);
@@ -86,6 +96,26 @@ namespace FlappyForm.Properties {
         internal static System.Drawing.Bitmap flappy_bird_pipe_png_7 {
             get {
                 object obj = ResourceManager.GetObject("flappy-bird-pipe-png-7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gbutton {
+            get {
+                object obj = ResourceManager.GetObject("Gbutton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pbutton {
+            get {
+                object obj = ResourceManager.GetObject("Pbutton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

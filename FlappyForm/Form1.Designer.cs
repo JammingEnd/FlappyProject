@@ -51,6 +51,8 @@ namespace FlappyForm
             this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipeTop1 = new System.Windows.Forms.PictureBox();
             this.HighscorePanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.HSscoreViewer = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.HSNameBox = new System.Windows.Forms.TextBox();
             this.sqlSendButton = new System.Windows.Forms.Button();
@@ -124,17 +126,24 @@ namespace FlappyForm
             // 
             // ExitButton
             // 
+            this.ExitButton.BackColor = System.Drawing.Color.Khaki;
+            this.ExitButton.BackgroundImage = global::FlappyForm.Properties.Resources.Pbutton;
+            this.ExitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitButton.Location = new System.Drawing.Point(21, 240);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(100, 48);
             this.ExitButton.TabIndex = 2;
             this.ExitButton.Text = "Exit";
-            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // HSButton
             // 
-            this.HSButton.BackColor = System.Drawing.Color.Gray;
+            this.HSButton.BackColor = System.Drawing.Color.Khaki;
+            this.HSButton.BackgroundImage = global::FlappyForm.Properties.Resources.Bbutton;
+            this.HSButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.HSButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HSButton.Location = new System.Drawing.Point(73, 144);
             this.HSButton.Name = "HSButton";
             this.HSButton.Size = new System.Drawing.Size(126, 59);
@@ -145,7 +154,10 @@ namespace FlappyForm
             // 
             // StartButton
             // 
-            this.StartButton.BackColor = System.Drawing.Color.Gray;
+            this.StartButton.BackColor = System.Drawing.Color.Khaki;
+            this.StartButton.BackgroundImage = global::FlappyForm.Properties.Resources.Gbutton;
+            this.StartButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartButton.Location = new System.Drawing.Point(73, 44);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(126, 59);
@@ -211,7 +223,7 @@ namespace FlappyForm
             // 
             // FlappyBird
             // 
-            this.FlappyBird.BackColor = System.Drawing.Color.Lime;
+            this.FlappyBird.BackColor = System.Drawing.Color.Transparent;
             this.FlappyBird.Image = global::FlappyForm.Properties.Resources.png_transparent_flappy_bird_bird_flight_bird_frame_animals_smiley;
             this.FlappyBird.Location = new System.Drawing.Point(131, 265);
             this.FlappyBird.Name = "FlappyBird";
@@ -270,23 +282,46 @@ namespace FlappyForm
             // HighscorePanel
             // 
             this.HighscorePanel.BackColor = System.Drawing.Color.NavajoWhite;
+            this.HighscorePanel.Controls.Add(this.label1);
+            this.HighscorePanel.Controls.Add(this.HSscoreViewer);
             this.HighscorePanel.Controls.Add(this.dataGridView1);
             this.HighscorePanel.Controls.Add(this.HSNameBox);
             this.HighscorePanel.Controls.Add(this.sqlSendButton);
             this.HighscorePanel.Controls.Add(this.HSBackbutton);
-            this.HighscorePanel.Location = new System.Drawing.Point(534, 119);
+            this.HighscorePanel.Location = new System.Drawing.Point(590, 175);
             this.HighscorePanel.Name = "HighscorePanel";
             this.HighscorePanel.Size = new System.Drawing.Size(660, 476);
             this.HighscorePanel.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(143, 422);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 24);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Name:";
+            // 
+            // HSscoreViewer
+            // 
+            this.HSscoreViewer.AutoSize = true;
+            this.HSscoreViewer.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HSscoreViewer.Location = new System.Drawing.Point(209, 375);
+            this.HSscoreViewer.Name = "HSscoreViewer";
+            this.HSscoreViewer.Size = new System.Drawing.Size(0, 31);
+            this.HSscoreViewer.TabIndex = 4;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(21, 23);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView1.Size = new System.Drawing.Size(621, 328);
             this.dataGridView1.TabIndex = 3;
             // 
@@ -299,22 +334,30 @@ namespace FlappyForm
             // 
             // sqlSendButton
             // 
+            this.sqlSendButton.BackColor = System.Drawing.Color.NavajoWhite;
+            this.sqlSendButton.BackgroundImage = global::FlappyForm.Properties.Resources.Gbutton;
+            this.sqlSendButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.sqlSendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sqlSendButton.Location = new System.Drawing.Point(548, 418);
             this.sqlSendButton.Name = "sqlSendButton";
             this.sqlSendButton.Size = new System.Drawing.Size(94, 34);
             this.sqlSendButton.TabIndex = 1;
             this.sqlSendButton.Text = "Send";
-            this.sqlSendButton.UseVisualStyleBackColor = true;
+            this.sqlSendButton.UseVisualStyleBackColor = false;
             this.sqlSendButton.Click += new System.EventHandler(this.sqlSendButton_Click);
             // 
             // HSBackbutton
             // 
+            this.HSBackbutton.BackColor = System.Drawing.Color.NavajoWhite;
+            this.HSBackbutton.BackgroundImage = global::FlappyForm.Properties.Resources.Pbutton;
+            this.HSBackbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.HSBackbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HSBackbutton.Location = new System.Drawing.Point(21, 414);
             this.HSBackbutton.Name = "HSBackbutton";
             this.HSBackbutton.Size = new System.Drawing.Size(92, 38);
             this.HSBackbutton.TabIndex = 0;
             this.HSBackbutton.Text = "Back";
-            this.HSBackbutton.UseVisualStyleBackColor = true;
+            this.HSBackbutton.UseVisualStyleBackColor = false;
             this.HSBackbutton.Click += new System.EventHandler(this.HSBackbutton_Click);
             // 
             // Form1
@@ -384,6 +427,8 @@ namespace FlappyForm
         private System.Windows.Forms.Button sqlSendButton;
         private System.Windows.Forms.TextBox HSNameBox;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label HSscoreViewer;
+        private System.Windows.Forms.Label label1;
     }
 }
 

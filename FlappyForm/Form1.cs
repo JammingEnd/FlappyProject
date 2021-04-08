@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
-using System.Threading.Tasks;
 
 namespace FlappyForm
 {
@@ -14,20 +13,29 @@ namespace FlappyForm
         private int defaultLives = 3;
         private int startingLives = 3; //should be self explanatory
         private int totalScore = 0; //bginning value of the totalscore
+
         /// <summary>
         /// on application load, loads all the default values for the application
         /// </summary>
         public Form1()
         {
             InitializeComponent();
-          
             WindowState = FormWindowState.Maximized;
             SQLReader(); //call the SQL class and datatable
             FlappyBird.BringToFront();
-            MenuPanel.Visible = true;
-            timer1.Enabled = false;
-            birdTimer.Enabled = false;
+
             this.DoubleBuffered = true;
+            MiscStart();
+            Start();
+            StartupHeight();
+        }
+
+        private void Start()
+        {
+            pipeTop1.Visible = false;
+            PipeBottom1.Visible = false;
+            HighscorePanel.Visible = false;
+            HSNameBox.Text = null;
             GOText.Visible = false;
             currentScore.Visible = false;
             menuScore.Visible = false;
@@ -36,17 +44,33 @@ namespace FlappyForm
             healthbar.Maximum = startingLives;
             healthbar.Minimum = 0;
             healthbar.Value = healthbar.Maximum;
-            StartupHeight(); 
-            pipeTop1.Visible = false;
-            PipeBottom1.Visible = false;
-            HighscorePanel.Visible = false;
-            HSNameBox.Text = null;
+            MenuPanel.Visible = true;
+            timer1.Enabled = false;
+            birdTimer.Enabled = false;
         }
+
+        /// <summary>
+        /// void for miscellaneous
+        /// </summary>
+        private void MiscStart()
+        {
+            StartButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            HSButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            HSBackbutton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            ExitButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            sqlSendButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            StartButton.FlatAppearance.BorderSize = 0;
+            HSButton.FlatAppearance.BorderSize = 0;
+            HSBackbutton.FlatAppearance.BorderSize = 0;
+            ExitButton.FlatAppearance.BorderSize = 0;
+            sqlSendButton.FlatAppearance.BorderSize = 0;
+        }
+
         /// <summary>
         /// void for the database
         /// </summary>
-        void SQLReader()
-        { 
+        private void SQLReader()
+        {
             CreateTable.Program program = new CreateTable.Program();
             program.MReaderMain();
             dataGridView1.DataSource = program.dtscore;
@@ -81,9 +105,8 @@ namespace FlappyForm
             gameOver();
             speedUp();
             // addPoints();
-            
         }
-        
+
         /// <summary>
         /// this code moves the pipes, speed is pixels in this case
         /// </summary>
@@ -172,11 +195,11 @@ namespace FlappyForm
         }
 
         //failed code
-        #region addpoints [decapretated] 
 
+        #region addpoints [decapretated]
 
         /// <summary>
-        /// adds a point every time a pipe reaches 0 
+        /// adds a point every time a pipe reaches 0
         /// </summary>
         private void addPoints()
         {
@@ -234,7 +257,6 @@ namespace FlappyForm
                 PipeBottom1.Visible = true;
             }
             //the above code handles the first 2 pipes in the game to be invisible.
-
 
             //when i contact with a pipe or too high or low, it resets most aspects of the game
             if (/*(FlappyBird.Bounds.IntersectsWith(pipe1.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe2.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe5.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe4.Bounds)) || */ FlappyBird.Top == 660 || FlappyBird.Top == 0 || intersectsWithBottom || intersectsWithTop)
@@ -296,7 +318,6 @@ namespace FlappyForm
             }
         }
 
-
         /// <summary>
         /// exit the application
         /// </summary>
@@ -304,7 +325,6 @@ namespace FlappyForm
         {
             Application.Exit();
         }
-
 
         /// <summary>
         /// initiates the game
@@ -328,7 +348,6 @@ namespace FlappyForm
             LifeReset();
         }
 
-
         /// <summary>
         /// jump little bird, JUMP. when space is pressed tho
         /// </summary>
@@ -338,9 +357,7 @@ namespace FlappyForm
             {
                 FlappyBird.Top += -flappyJumpSpeed;
             }
-
         }
-
 
         /// <summary>
         /// independed timer for flappy birds jumps
@@ -352,6 +369,7 @@ namespace FlappyForm
         }
 
         //region for accidental voids
+
         #region oopsies void
 
         private void FlappyBird_Click(object sender, EventArgs e)
@@ -381,9 +399,8 @@ namespace FlappyForm
         private void pipeTop1_Click(object sender, EventArgs e)
         {
         }
-       
-        #endregion oopsies void
 
+        #endregion oopsies void
 
         /// <summary>
         /// shows the highscore panel and hides the main menu
@@ -392,7 +409,11 @@ namespace FlappyForm
         {
             HighscorePanel.Visible = true;
             MenuPanel.Visible = false;
+
+            HSNameBox.Text = "";
+            HSscoreViewer.Text = "Current Score: " + totalScore.ToString();
         }
+
         /// <summary>
         /// highscore button for leaving the panel
         /// </summary>
@@ -407,6 +428,13 @@ namespace FlappyForm
         /// </summary>
         private void sqlSendButton_Click(object sender, EventArgs e)
         {
+            if (startingLives != 0)
+            {
+                HSNameBox.Text = "0 lives required for leaderboard";
+
+                return;
+            }
+
             CreateTable.Program program = new CreateTable.Program();
             string nameSend = HSNameBox.Text;
 
@@ -416,7 +444,7 @@ namespace FlappyForm
 
                 HSNameBox.Text = "Scores Send!!!";
             }
-            else if (nameSend == "" || nameSend == null) 
+            else if (nameSend == "" || nameSend == null)
             {
                 HSNameBox.Text = "Insert a name!";
                 if (nameSend != "" || nameSend != null)
@@ -424,9 +452,6 @@ namespace FlappyForm
                     HSNameBox.Text = "";
                 }
             }
-
-
         }
-
     }
 }
