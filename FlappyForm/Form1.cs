@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 
@@ -12,16 +13,16 @@ namespace FlappyForm
         private int tableOf = 5; //preset for the table of 5
         private int defaultLives = 3;
         private int startingLives = 3; //should be self explanatory
-        private int totalScore = 0;
-        public string HStext;
-        
-
+        private int totalScore = 0; //bginning value of the totalscore
+        /// <summary>
+        /// on application load, loads all the default values for the application
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
           
             WindowState = FormWindowState.Maximized;
-            SQLReader();
+            SQLReader(); //call the SQL class and datatable
             FlappyBird.BringToFront();
             MenuPanel.Visible = true;
             timer1.Enabled = false;
@@ -35,38 +36,29 @@ namespace FlappyForm
             healthbar.Maximum = startingLives;
             healthbar.Minimum = 0;
             healthbar.Value = healthbar.Maximum;
-            StartupHeight();
+            StartupHeight(); 
             pipeTop1.Visible = false;
             PipeBottom1.Visible = false;
             HighscorePanel.Visible = false;
             HSNameBox.Text = null;
         }
-
+        /// <summary>
+        /// void for the database
+        /// </summary>
         void SQLReader()
         { 
             CreateTable.Program program = new CreateTable.Program();
-
-            string value =  program.MReaderMain();
-
-            if (value == null)
-            {
-                Console.WriteLine("error occured, NULL values detected");
-                return;
-                
-            }
-            
-         //  HStext = program.HStext;
-         string[] row = {value};
-         var listviewItem = new ListViewItem(row);
-         listView1.Items.Add(listviewItem);
-
-         Console.WriteLine(value);
+            program.MReaderMain();
+            dataGridView1.DataSource = program.dtscore;
         }
 
         private Random h = new Random(); //random height
         private Random betweenRandom = new Random(); //random space between the pipes
         //  private Random offRandom = new Random(); //pipe offset
 
+        /// <summary>
+        /// gives the pipes a random height upon load
+        /// </summary>
         private void StartupHeight()
         {
             pipe2.Height = h.Next(100, 300);//random value between the entered numbers
@@ -77,6 +69,12 @@ namespace FlappyForm
             PipeBottom1.Top = pipeTop1.Bottom + betweenRandom.Next(150, 250);
         }
 
+        /// <summary>
+        /// main engine of the game. controls the speed and Updates other void.
+        /// its like the Update method from unity
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             movepipe(gameSpeed);
@@ -85,7 +83,11 @@ namespace FlappyForm
             // addPoints();
             
         }
-
+        
+        /// <summary>
+        /// this code moves the pipes, speed is pixels in this case
+        /// </summary>
+        /// <param name="speed"></param>
         private void movepipe(int speed)
         {
             if (pipe1.Left >= 0) //bottom pipe
@@ -123,7 +125,7 @@ namespace FlappyForm
                 pipe2.Left = 1800;
                 pipe2.Height = h.Next(100, 300);//random value between the entered numbers
                 pipe1.Top = pipe2.Bottom + betweenRandom.Next(150, 250);
-                //  pipe2.Left = 1800 + offRandom.Next(0, 150);
+                //  pipe2.Left = 1800 + offRandom.Next(0, 150); //this offsets the horizontal distance between the pipes, it causes issues overtime.
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
@@ -135,7 +137,7 @@ namespace FlappyForm
                 pipe4.Left = 1800;
                 pipe4.Height = h.Next(100, 300);//random value between the entered numbers
                 pipe5.Top = pipe4.Bottom + betweenRandom.Next(150, 250);
-                //  pipe4.Left = 1800 + offRandom.Next(0, 150);
+                //  pipe4.Left = 1800 + offRandom.Next(0, 150); //this offsets the horizontal distance between the pipes, it causes issues overtime.
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
@@ -152,10 +154,13 @@ namespace FlappyForm
                 }
 
                 currentScore.Text = "Score:" + score.ToString();
-                //  pipeTop1.Left = 1800 + offRandom.Next(0, 150);
+                //  pipeTop1.Left = 1800 + offRandom.Next(0, 150); //this offsets the horizontal distance between the pipes, it causes issues overtime.
             }
         }
 
+        /// <summary>
+        /// increases the gamespeed every set of tableOf
+        /// </summary>
         private void speedUp()
         {
             if (score == tableOf)
@@ -166,8 +171,13 @@ namespace FlappyForm
             }
         }
 
-        #region addpoints [decapretated]
+        //failed code
+        #region addpoints [decapretated] 
 
+
+        /// <summary>
+        /// adds a point every time a pipe reaches 0 
+        /// </summary>
         private void addPoints()
         {
             if (pipe1.Left <= 0)
@@ -204,6 +214,9 @@ namespace FlappyForm
 
         #endregion addpoints [decapretated]
 
+        /// <summary>
+        /// handels the part when you intersect come in contact with a pipe.
+        /// </summary>
         private void gameOver()
         {
             var intersectsWithTop = FlappyBird.Bounds.IntersectsWith(pipeTop1.Bounds);
@@ -220,6 +233,10 @@ namespace FlappyForm
                 pipeTop1.Visible = true;
                 PipeBottom1.Visible = true;
             }
+            //the above code handles the first 2 pipes in the game to be invisible.
+
+
+            //when i contact with a pipe or too high or low, it resets most aspects of the game
             if (/*(FlappyBird.Bounds.IntersectsWith(pipe1.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe2.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe5.Bounds)) || (FlappyBird.Bounds.IntersectsWith(pipe4.Bounds)) || */ FlappyBird.Top == 660 || FlappyBird.Top == 0 || intersectsWithBottom || intersectsWithTop)
             {
                 MenuPanel.Visible = true;
@@ -233,7 +250,7 @@ namespace FlappyForm
                 healthbar.Value = startingLives;
                 lifeLabel.Text = startingLives.ToString();
                 StartButton.Enabled = true;
-                totalScore = totalScore + score;
+                totalScore = totalScore + score; //at the end of your run, set totalscore to add your current score.
                 menuScore.Text = "Total score:" + totalScore.ToString();
                 HSButton.Enabled = true;
 
@@ -241,6 +258,9 @@ namespace FlappyForm
             }
         }
 
+        /// <summary>
+        /// places all the pipes in the default position.
+        /// </summary>
         private void Reset()
         {
             #region Default Form
@@ -264,6 +284,9 @@ namespace FlappyForm
             #endregion Default Form
         }
 
+        /// <summary>
+        /// when youre out of lives, the rest of the game resets
+        /// </summary>
         private void LifeReset()
         {
             if (startingLives == 0)
@@ -273,11 +296,19 @@ namespace FlappyForm
             }
         }
 
+
+        /// <summary>
+        /// exit the application
+        /// </summary>
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+
+        /// <summary>
+        /// initiates the game
+        /// </summary>
         private void StartButton_Click(object sender, EventArgs e)
         {
             timer1.Enabled = true;
@@ -297,6 +328,10 @@ namespace FlappyForm
             LifeReset();
         }
 
+
+        /// <summary>
+        /// jump little bird, JUMP. when space is pressed tho
+        /// </summary>
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
@@ -306,12 +341,17 @@ namespace FlappyForm
 
         }
 
+
+        /// <summary>
+        /// independed timer for flappy birds jumps
+        /// </summary>
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (FlappyBird.Top <= 655)
                 FlappyBird.Top += 5;
         }
 
+        //region for accidental voids
         #region oopsies void
 
         private void FlappyBird_Click(object sender, EventArgs e)
@@ -341,9 +381,13 @@ namespace FlappyForm
         private void pipeTop1_Click(object sender, EventArgs e)
         {
         }
-
+       
         #endregion oopsies void
 
+
+        /// <summary>
+        /// shows the highscore panel and hides the main menu
+        /// </summary>
         private void HSButton_Click(object sender, EventArgs e)
         {
             HighscorePanel.Visible = true;
@@ -358,6 +402,9 @@ namespace FlappyForm
             MenuPanel.Visible = true;
         }
 
+        /// <summary>
+        /// send the name and score to the Database class
+        /// </summary>
         private void sqlSendButton_Click(object sender, EventArgs e)
         {
             CreateTable.Program program = new CreateTable.Program();
@@ -368,18 +415,18 @@ namespace FlappyForm
                 program.SQLConnect(nameSend, totalScore);
 
                 HSNameBox.Text = "Scores Send!!!";
-                Task.Delay(5000);
-                HSNameBox.Text = "";
             }
-            else
+            else if (nameSend == "" || nameSend == null) 
             {
                 HSNameBox.Text = "Insert a name!";
-                Task.Delay(3000); 
-                HSNameBox.Text = "";
+                if (nameSend != "" || nameSend != null)
+                {
+                    HSNameBox.Text = "";
+                }
             }
-            
 
 
         }
+
     }
 }

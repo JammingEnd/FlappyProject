@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,9 @@ namespace CreateTable
     public class Program
     {
 
-
+        /// <summary>
+        /// Sends score and name to the sql database
+        /// </summary>
         public void SQLConnect(string nameSend, int scoreSQL)
         {
 
@@ -34,13 +37,16 @@ namespace CreateTable
             Console.WriteLine("row inserted");
         }
 
-        public string HStext;
-       
-
-        public string MReaderMain()
+         public DataTable dtscore = new DataTable(); //creates a new datatable 
+        
+        /// <summary>
+        /// connects to the sql database, queries the top 10 and puts it in the datatable
+        /// </summary>
+        /// <returns></returns>
+        public DataTable MReaderMain()
         {
 
-            string result = "";
+            dtscore.Columns.Add("Name-score-time");
             string cs = @"server=localhost;userid=root;password=;database=scores";
 
             using var con = new MySqlConnection(cs);
@@ -53,19 +59,18 @@ namespace CreateTable
                 {
                     while (rdr.Read())
                     {
-                        Console.WriteLine("{0} {1} {2}", rdr.GetString(1), rdr.GetInt32(2),
-                            rdr.GetDateTime(3));
-                        var text = ("{0} {1} {2}", rdr.GetString(1), rdr.GetInt32(2),
-                            rdr.GetDateTime(3));
+                        var text = ("Name: " +rdr.GetString(1),"Score: " + rdr.GetInt32(2),
+                           "Time: " + rdr.GetDateTime(3));
                         // HStext = text.ToString();
-                        result = text.ToString();
+                        
+                        dtscore.Rows.Add(text.ToString());
 
                     }
 
                 }
             }
 
-            return result;
+            return dtscore;
 
 
 

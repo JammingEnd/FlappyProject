@@ -51,8 +51,7 @@ namespace FlappyForm
             this.pipe4 = new System.Windows.Forms.PictureBox();
             this.pipeTop1 = new System.Windows.Forms.PictureBox();
             this.HighscorePanel = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.LVstats = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.HSNameBox = new System.Windows.Forms.TextBox();
             this.sqlSendButton = new System.Windows.Forms.Button();
             this.HSBackbutton = new System.Windows.Forms.Button();
@@ -65,6 +64,7 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.pipe4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).BeginInit();
             this.HighscorePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // currentScore
@@ -270,37 +270,36 @@ namespace FlappyForm
             // HighscorePanel
             // 
             this.HighscorePanel.BackColor = System.Drawing.Color.NavajoWhite;
-            this.HighscorePanel.Controls.Add(this.listView1);
+            this.HighscorePanel.Controls.Add(this.dataGridView1);
             this.HighscorePanel.Controls.Add(this.HSNameBox);
             this.HighscorePanel.Controls.Add(this.sqlSendButton);
             this.HighscorePanel.Controls.Add(this.HSBackbutton);
-            this.HighscorePanel.Location = new System.Drawing.Point(300, 283);
+            this.HighscorePanel.Location = new System.Drawing.Point(534, 119);
             this.HighscorePanel.Name = "HighscorePanel";
-            this.HighscorePanel.Size = new System.Drawing.Size(286, 315);
+            this.HighscorePanel.Size = new System.Drawing.Size(660, 476);
             this.HighscorePanel.TabIndex = 11;
             // 
-            // listView1
+            // dataGridView1
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.LVstats});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(29, 22);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(239, 195);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(21, 23);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(621, 328);
+            this.dataGridView1.TabIndex = 3;
             // 
             // HSNameBox
             // 
-            this.HSNameBox.Location = new System.Drawing.Point(41, 235);
+            this.HSNameBox.Location = new System.Drawing.Point(215, 422);
             this.HSNameBox.Name = "HSNameBox";
             this.HSNameBox.Size = new System.Drawing.Size(219, 22);
             this.HSNameBox.TabIndex = 2;
             // 
             // sqlSendButton
             // 
-            this.sqlSendButton.Location = new System.Drawing.Point(189, 265);
+            this.sqlSendButton.Location = new System.Drawing.Point(548, 418);
             this.sqlSendButton.Name = "sqlSendButton";
             this.sqlSendButton.Size = new System.Drawing.Size(94, 34);
             this.sqlSendButton.TabIndex = 1;
@@ -310,7 +309,7 @@ namespace FlappyForm
             // 
             // HSBackbutton
             // 
-            this.HSBackbutton.Location = new System.Drawing.Point(13, 263);
+            this.HSBackbutton.Location = new System.Drawing.Point(21, 414);
             this.HSBackbutton.Name = "HSBackbutton";
             this.HSBackbutton.Size = new System.Drawing.Size(92, 38);
             this.HSBackbutton.TabIndex = 0;
@@ -329,7 +328,6 @@ namespace FlappyForm
             this.Controls.Add(this.HighscorePanel);
             this.Controls.Add(this.pipe2);
             this.Controls.Add(this.pipe1);
-            this.Controls.Add(this.GOText);
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.currentScore);
             this.Controls.Add(this.FlappyBird);
@@ -338,6 +336,7 @@ namespace FlappyForm
             this.Controls.Add(this.pipe4);
             this.Controls.Add(this.pipeTop1);
             this.Controls.Add(this.Ground);
+            this.Controls.Add(this.GOText);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -353,6 +352,7 @@ namespace FlappyForm
             ((System.ComponentModel.ISupportInitialize)(this.pipeTop1)).EndInit();
             this.HighscorePanel.ResumeLayout(false);
             this.HighscorePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,8 +383,7 @@ namespace FlappyForm
         private System.Windows.Forms.Button HSBackbutton;
         private System.Windows.Forms.Button sqlSendButton;
         private System.Windows.Forms.TextBox HSNameBox;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader LVstats;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
