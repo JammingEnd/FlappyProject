@@ -50,7 +50,7 @@ namespace FlappyForm
         }
 
         /// <summary>
-        /// void for miscellaneous
+        /// void for miscellaneous, edits the button borders and style
         /// </summary>
         private void MiscStart()
         {
