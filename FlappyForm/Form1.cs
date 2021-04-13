@@ -7,12 +7,16 @@ namespace FlappyForm
     public partial class Form1 : Form
     {
         private int flappyJumpSpeed = 80; //default for now
-        private int gameSpeed = 10; //default for now
+        private int gameSpeed;
+        private int startGameSpeed = 5;
         private int score = 0; //default starting score
         private int tableOf = 5; //preset for the table of 5
         private int defaultLives = 3;
         private int startingLives = 3; //should be self explanatory
         private int totalScore = 0; //bginning value of the totalscore
+        private bool isExperimantal = false;
+        private int offRandomB1 = 0;
+        private int offRandomB2 = 0;
 
         /// <summary>
         /// on application load, loads all the default values for the application
@@ -47,6 +51,7 @@ namespace FlappyForm
             MenuPanel.Visible = true;
             timer1.Enabled = false;
             birdTimer.Enabled = false;
+            gameSpeed = startGameSpeed;
         }
 
         /// <summary>
@@ -78,7 +83,7 @@ namespace FlappyForm
 
         private Random h = new Random(); //random height
         private Random betweenRandom = new Random(); //random space between the pipes
-        //  private Random offRandom = new Random(); //pipe offset
+        private Random offRandom = new Random(); //pipe offset
 
         /// <summary>
         /// gives the pipes a random height upon load
@@ -147,8 +152,8 @@ namespace FlappyForm
             {
                 pipe2.Left = 1800;
                 pipe2.Height = h.Next(100, 300);//random value between the entered numbers
-                pipe1.Top = pipe2.Bottom + betweenRandom.Next(150, 250);
-                //  pipe2.Left = 1800 + offRandom.Next(0, 150); //this offsets the horizontal distance between the pipes, it causes issues overtime.
+                pipe1.Top = pipe2.Bottom + betweenRandom.Next(150, 250); 
+                pipe2.Left = 1800 + offRandom.Next(offRandomB1, offRandomB2); //this offsets the horizontal distance between the pipes, it causes issues overtime.
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
@@ -160,7 +165,7 @@ namespace FlappyForm
                 pipe4.Left = 1800;
                 pipe4.Height = h.Next(100, 300);//random value between the entered numbers
                 pipe5.Top = pipe4.Bottom + betweenRandom.Next(150, 250);
-                //  pipe4.Left = 1800 + offRandom.Next(0, 150); //this offsets the horizontal distance between the pipes, it causes issues overtime.
+                pipe4.Left = 1800 + offRandom.Next(offRandomB1, offRandomB2); //this offsets the horizontal distance between the pipes, it causes issues overtime.
                 score = score + 1;
                 currentScore.Text = "Score:" + score.ToString();
             }
@@ -177,7 +182,28 @@ namespace FlappyForm
                 }
 
                 currentScore.Text = "Score:" + score.ToString();
-                //  pipeTop1.Left = 1800 + offRandom.Next(0, 150); //this offsets the horizontal distance between the pipes, it causes issues overtime.
+                pipeTop1.Left = 1800 + offRandom.Next(offRandomB1, offRandomB2); //this offsets the horizontal distance between the pipes, it causes issues overtime.
+                if (isExperimantal == true)554445
+                {
+                    if ((PipeBottom1.Bounds.IntersectsWith(pipeTop1.Bounds)) ||
+                        (PipeBottom1.Bounds.IntersectsWith(pipe4.Bounds)) ||
+                        (PipeBottom1.Bounds.IntersectsWith(pipe2.Bounds)))
+                    {
+                        PipeBottom1.Top = PipeBottom1.Top - 150;
+                    }
+
+                    if ((pipe5.Bounds.IntersectsWith(pipeTop1.Bounds)) || (pipe5.Bounds.IntersectsWith(pipe4.Bounds)) ||
+                        (pipe5.Bounds.IntersectsWith(pipe2.Bounds)))
+                    {
+                        pipe5.Top = pipe5.Top - 150;
+                    }
+
+                    if ((pipe1.Bounds.IntersectsWith(pipeTop1.Bounds)) || (pipe1.Bounds.IntersectsWith(pipe4.Bounds)) ||
+                        (pipe1.Bounds.IntersectsWith(pipe2.Bounds)))
+                    {
+                        pipe1.Top = pipe1.Top - 150;
+                    }
+                }
             }
         }
 
@@ -186,15 +212,15 @@ namespace FlappyForm
         /// </summary>
         private void speedUp()
         {
-            if (score == 9 || score == 10)
-            {
-                tableOf = 15;
-            }
-            if (score == tableOf)
+            if(score == tableOf)
             {
                 gameSpeed = gameSpeed + 1;
                 tableOf = tableOf + 5;
-                currentScore.Text = "speed up!";
+                SpeedUplabel.Text = "Speed Up!";
+                if (score != tableOf + 1)
+                {
+                    SpeedUplabel.Text = null;
+                }
             }
         }
 
@@ -271,7 +297,7 @@ namespace FlappyForm
                 flappyJumpSpeed = 0;
                 GOText.Visible = true;
                 menuScore.Visible = true;
-                gameSpeed = 10;
+                gameSpeed = startGameSpeed;
                 startingLives = startingLives - 1;
                 healthbar.Value = startingLives;
                 lifeLabel.Text = startingLives.ToString();
@@ -279,7 +305,17 @@ namespace FlappyForm
                 totalScore = totalScore + score; //at the end of your run, set totalscore to add your current score.
                 menuScore.Text = "Total score:" + totalScore.ToString();
                 HSButton.Enabled = true;
+                if (startingLives != 3)
+                {
+                    radioButton1.Visible = false;
+                    radioButton1.Enabled = false;
+                }
+                else
+                {
+                    radioButton1.Visible = true;
+                    radioButton1.Enabled = true;
 
+                }
                 Reset();
             }
         }
@@ -341,7 +377,8 @@ namespace FlappyForm
             {
                 flappyJumpSpeed = 80;
             }
-
+           ExperimentalMode();
+            
             StartButton.Enabled = false;
             MenuPanel.Visible = false;
             GOText.Visible = false;
@@ -352,6 +389,22 @@ namespace FlappyForm
             LifeReset();
         }
 
+        void ExperimentalMode()
+        {
+            if (radioButton1.Checked == true)
+            {
+                isExperimantal = true;
+            }
+
+            if (isExperimantal == true)
+            {
+                 offRandomB2 = 150;
+            }
+            else
+            {
+                offRandomB2 = 0;
+            }
+        }
         /// <summary>
         /// jump little bird, JUMP. when space is pressed tho
         /// </summary>
@@ -465,6 +518,10 @@ namespace FlappyForm
         }
 
         private void PipeBottom1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

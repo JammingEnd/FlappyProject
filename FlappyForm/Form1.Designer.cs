@@ -57,6 +57,8 @@ namespace FlappyForm
             this.HSNameBox = new System.Windows.Forms.TextBox();
             this.sqlSendButton = new System.Windows.Forms.Button();
             this.HSBackbutton = new System.Windows.Forms.Button();
+            this.SpeedUplabel = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pipe2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipe1)).BeginInit();
@@ -73,16 +75,17 @@ namespace FlappyForm
             // 
             this.currentScore.AutoSize = true;
             this.currentScore.BackColor = System.Drawing.Color.Transparent;
-            this.currentScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.currentScore.Location = new System.Drawing.Point(20, 9);
+            this.currentScore.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentScore.Location = new System.Drawing.Point(798, 9);
             this.currentScore.Name = "currentScore";
-            this.currentScore.Size = new System.Drawing.Size(124, 39);
+            this.currentScore.Size = new System.Drawing.Size(139, 54);
             this.currentScore.TabIndex = 3;
             this.currentScore.Text = "Score: ";
             // 
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.Khaki;
+            this.MenuPanel.Controls.Add(this.radioButton1);
             this.MenuPanel.Controls.Add(this.healthbar);
             this.MenuPanel.Controls.Add(this.lifeLabel);
             this.MenuPanel.Controls.Add(this.menuScore);
@@ -289,7 +292,7 @@ namespace FlappyForm
             this.HighscorePanel.Controls.Add(this.HSNameBox);
             this.HighscorePanel.Controls.Add(this.sqlSendButton);
             this.HighscorePanel.Controls.Add(this.HSBackbutton);
-            this.HighscorePanel.Location = new System.Drawing.Point(590, 175);
+            this.HighscorePanel.Location = new System.Drawing.Point(41, 95);
             this.HighscorePanel.Name = "HighscorePanel";
             this.HighscorePanel.Size = new System.Drawing.Size(660, 476);
             this.HighscorePanel.TabIndex = 11;
@@ -361,6 +364,28 @@ namespace FlappyForm
             this.HSBackbutton.UseVisualStyleBackColor = false;
             this.HSBackbutton.Click += new System.EventHandler(this.HSBackbutton_Click);
             // 
+            // SpeedUplabel
+            // 
+            this.SpeedUplabel.AutoSize = true;
+            this.SpeedUplabel.BackColor = System.Drawing.Color.Transparent;
+            this.SpeedUplabel.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpeedUplabel.Location = new System.Drawing.Point(825, 63);
+            this.SpeedUplabel.Name = "SpeedUplabel";
+            this.SpeedUplabel.Size = new System.Drawing.Size(0, 31);
+            this.SpeedUplabel.TabIndex = 12;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(162, 291);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(307, 21);
+            this.radioButton1.TabIndex = 6;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Experimantel mode (kinda breaks the game)";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -369,6 +394,7 @@ namespace FlappyForm
             this.BackgroundImage = global::FlappyForm.Properties.Resources.achtergrond;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1924, 1041);
+            this.Controls.Add(this.SpeedUplabel);
             this.Controls.Add(this.HighscorePanel);
             this.Controls.Add(this.pipe2);
             this.Controls.Add(this.pipe1);
@@ -430,6 +456,8 @@ namespace FlappyForm
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label HSscoreViewer;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label SpeedUplabel;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 
