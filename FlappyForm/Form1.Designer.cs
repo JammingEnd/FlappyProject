@@ -292,7 +292,7 @@ namespace FlappyForm
             this.HighscorePanel.Controls.Add(this.HSNameBox);
             this.HighscorePanel.Controls.Add(this.sqlSendButton);
             this.HighscorePanel.Controls.Add(this.HSBackbutton);
-            this.HighscorePanel.Location = new System.Drawing.Point(41, 95);
+            this.HighscorePanel.Location = new System.Drawing.Point(639, 136);
             this.HighscorePanel.Name = "HighscorePanel";
             this.HighscorePanel.Size = new System.Drawing.Size(660, 476);
             this.HighscorePanel.TabIndex = 11;

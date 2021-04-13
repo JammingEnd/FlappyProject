@@ -183,7 +183,7 @@ namespace FlappyForm
 
                 currentScore.Text = "Score:" + score.ToString();
                 pipeTop1.Left = 1800 + offRandom.Next(offRandomB1, offRandomB2); //this offsets the horizontal distance between the pipes, it causes issues overtime.
-                if (isExperimantal == true)554445
+                if (isExperimantal == true)
                 {
                     if ((PipeBottom1.Bounds.IntersectsWith(pipeTop1.Bounds)) ||
                         (PipeBottom1.Bounds.IntersectsWith(pipe4.Bounds)) ||
